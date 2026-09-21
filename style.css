@@ -1,4 +1,4 @@
-/* Color Palette Variables */
+/* Color Variables */
 :root {
     --bg-color: #f8fafc;
     --text-color: #0f172a;
@@ -7,11 +7,8 @@
     --border-color: #e2e8f0;
     --subtext-color: #64748b;
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --banner-bg: #eff6ff;
-    --banner-text: #1e40af;
 }
 
-/* Dark Theme Variables */
 [data-theme="dark"] {
     --bg-color: #0f172a;
     --text-color: #f8fafc;
@@ -20,11 +17,9 @@
     --border-color: #334155;
     --subtext-color: #94a3b8;
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-    --banner-bg: #1e3a8a;
-    --banner-text: #dbeafe;
 }
 
-/* Base Styles */
+/* Base resets */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -33,38 +28,71 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
 }
 
-/* Notification / Headline Banner */
+/* Modern Announcement Banner */
 .notification-banner {
-    background-color: var(--banner-bg);
-    color: var(--banner-text);
-    padding: 0.5rem 1rem;
-    text-align: center;
-    font-size: 0.85rem;
-    font-weight: 500;
-    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+    color: #ffffff;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.875rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.2);
+    z-index: 1001;
 }
 
-.notification-banner .badge {
-    background-color: var(--accent-color);
+.banner-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pulse-badge {
+    background-color: #ef4444;
     color: #ffffff;
     font-size: 0.7rem;
     font-weight: 700;
-    padding: 0.1rem 0.4rem;
-    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
+    animation: pulse 2s infinite;
 }
 
-/* Navbar & Logo */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.banner-link {
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.banner-close {
+    position: absolute;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -86,7 +114,6 @@ body {
 .logo-text {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--text-color);
 }
 
 .nav-links {
@@ -102,12 +129,6 @@ body {
 
 .nav-link:hover {
     color: var(--accent-color);
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
 }
 
 .theme-btn {
@@ -133,7 +154,7 @@ body {
     border-radius: 2px;
 }
 
-/* Hero Section */
+/* Hero & Layout */
 .hero {
     padding: 4rem 2rem;
     text-align: center;
@@ -148,7 +169,6 @@ body {
     margin: 1rem 0 1.5rem;
 }
 
-/* Sections & Cards */
 .section {
     max-width: 900px;
     margin: 0 auto;
@@ -163,9 +183,7 @@ body {
 
 .skills-instruction {
     font-size: 0.85rem;
-    font-weight: normal;
     color: var(--subtext-color);
-    margin-left: 0.5rem;
 }
 
 .card {
@@ -195,10 +213,9 @@ body {
 .project-tags {
     display: flex;
     gap: 0.4rem;
-    flex-wrap: wrap;
 }
 
-/* Clickable Skill Chips */
+/* Skills */
 .skills-container {
     display: flex;
     flex-wrap: wrap;
@@ -211,20 +228,18 @@ body {
     color: var(--text-color);
     padding: 0.5rem 1rem;
     border-radius: 20px;
-    font-size: 0.9rem;
     text-decoration: none;
-    display: inline-block;
+    font-size: 0.9rem;
     transition: all 0.2s ease;
 }
 
 .skill-chip:hover {
     background-color: var(--accent-color);
     color: #ffffff;
-    border-color: var(--accent-color);
     transform: translateY(-2px);
 }
 
-/* Small Compact Contact Form Styling */
+/* Small Form Section */
 .small-contact-section {
     max-width: 650px;
 }
@@ -242,13 +257,6 @@ body {
     flex: 1;
 }
 
-.small-btn {
-    padding: 0.5rem 1.2rem;
-    font-size: 0.9rem;
-    width: 100%;
-}
-
-/* General Buttons & Inputs */
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -262,6 +270,12 @@ body {
 .primary-btn {
     background-color: var(--accent-color);
     color: #ffffff;
+}
+
+.small-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+    width: 100%;
 }
 
 .form-group {
@@ -308,12 +322,8 @@ footer {
     margin-top: 2.5rem;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
-
+    .hamburger { display: flex; }
     .nav-links {
         display: none;
         position: absolute;
@@ -325,13 +335,6 @@ footer {
         padding: 1rem 2rem;
         border-bottom: 1px solid var(--border-color);
     }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
+    .nav-links.active { display: flex; }
+    .form-row { flex-direction: column; gap: 0; }
 }
