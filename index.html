@@ -3,38 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md. Amdadul Islam | IT Clan & Software Solutions</title>
+    <title>Md. Amdadul Islam | SynapseAI Data Science & Analytics</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
-    <!-- Top Announcement Banner -->
-    <div class="notification-banner" id="topBanner">
-        <div class="banner-content">
-            <span class="badge pulse-badge">NEW</span>
-            <span class="banner-text">
-                <strong>Live Workshop:</strong> Full-Stack Development sessions are now live!
-            </span>
-            <a href="register.html" class="banner-link">Register Now &rarr;</a>
-        </div>
-        <button class="banner-close" id="closeBanner" aria-label="Close Announcement">&times;</button>
+<body data-theme="dark">
+
+    <!-- Glowing Background Effect -->
+    <div class="bg-glow-container">
+        <div class="glow-sphere glow-1"></div>
+        <div class="glow-sphere glow-2"></div>
     </div>
 
-    <!-- Header / Navbar -->
+    <!-- Announcement Banner -->
+    <div class="notification-banner" id="topBanner">
+        <div class="banner-content">
+            <span class="badge pulse-badge">DATA SCIENCE</span>
+            <span class="banner-text">
+                <strong>Next-Gen Analytics 2026:</strong> Scale predictive modeling and neural insights seamlessly.
+            </span>
+            <a href="register.html" class="banner-link">Explore Solutions &rarr;</a>
+        </div>
+        <button class="banner-close" id="closeBanner" aria-label="Close Banner">&times;</button>
+    </div>
+
+    <!-- Header / Navigation -->
     <header class="navbar">
         <div class="logo-container">
-            <svg class="logo-icon" width="38" height="38" viewBox="0 0 100 100">
-                <rect width="100" height="100" rx="18" fill="var(--accent-color)"/>
-                <path d="M30 30 L50 70 L70 30" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                <circle cx="50" cy="30" r="6" fill="#ffffff"/>
-            </svg>
-            <span class="logo-text">IT Clan Tech</span>
+            <div class="logo-icon-wrapper">
+                <svg class="logo-icon" width="28" height="28" viewBox="0 0 100 100">
+                    <path d="M20 20 H80 V40 H40 V60 H80 V80 H20 Z" fill="url(#logo-grad)"/>
+                    <defs>
+                        <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00f2fe" />
+                            <stop offset="100%" stop-color="#4facfe" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <span class="logo-text">Synapse<span class="logo-accent">AI</span></span>
         </div>
 
         <nav class="nav-links" id="navLinks">
-            <a href="#services" class="nav-link">Services</a>
-            <a href="#about" class="nav-link">About</a>
-            <a href="#projects" class="nav-link">Projects</a>
-            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#platform" class="nav-link">Platform</a>
+            <a href="#solutions" class="nav-link">Solutions</a>
+            <a href="#platform-dashboard" class="nav-link">Data Studio</a>
+            <a href="#skills" class="nav-link">Capabilities</a>
             <a href="#contact" class="nav-link">Contact</a>
         </nav>
 
@@ -48,115 +64,152 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- SynapseAI Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <span class="hero-tagline">🚀 Innovative Web & IT Solutions</span>
-            <h1>Hi, I'm <span class="highlight">Md. Amdadul Islam</span></h1>
-            <p class="subtitle">Empowering businesses with modern web platforms, internet software, and bespoke IT services.</p>
-            <div class="hero-btns">
-                <a href="#projects" class="btn primary-btn">Explore Projects</a>
-                <a href="#contact" class="btn secondary-btn">Get In Touch</a>
-            </div>
+        <div class="hero-badge">
+            <span class="hero-badge-dot"></span> Enterprise Data Science Platform
         </div>
-    </section>
+        <h1 class="hero-title">Transform Big Data into <br><span class="gradient-text">Predictive Intelligence</span></h1>
+        <p class="subtitle">Hi, I'm <strong>Md. Amdadul Islam</strong>. Designing scalable data pipelines, advanced statistical models, and production-ready machine learning solutions for enterprise growth.</p>
 
-    <!-- IT Agency Services Section -->
-    <section id="services" class="section">
-        <h2>Our Core Services</h2>
-        <div class="grid">
-            <div class="card service-card">
-                <div class="card-icon">🌐</div>
-                <h3>Web Development</h3>
-                <p>Custom-tailored web applications designed for performance, accessibility, and high conversion.</p>
-            </div>
-            <div class="card service-card">
-                <div class="card-icon">📱</div>
-                <h3>UI/UX Architecture</h3>
-                <p>Clean, modern, user-centric interface design built for intuitive web and mobile experiences.</p>
-            </div>
-            <div class="card service-card">
-                <div class="card-icon">⚡</div>
-                <h3>Software Solutions</h3>
-                <p>Modular, scalable software architecture powering enterprise operations and digital agencies.</p>
-            </div>
+        <div class="hero-btns">
+            <a href="#contact" class="btn primary-btn btn-glow">Request Consultation</a>
+            <a href="#platform" class="btn secondary-btn">Explore Data Studio</a>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <h2>About Me</h2>
-        <div class="card">
-            <p>I am a full-stack web developer and software builder focused on creating scalable web standards, agency-grade client solutions, and modern web architectures with seamless UI/UX design.</p>
-        </div>
-    </section>
+        <!-- Data Science Command Studio & Metrics Dashboard -->
+        <div class="metrics-dashboard glass-panel" id="platform-dashboard">
+            <div class="dashboard-header">
+                <div class="status-indicator">
+                    <span class="status-dot green-pulse"></span>
+                    <span class="status-text">Synapse Core Engine: <strong>Active Training Pipeline</strong></span>
+                </div>
+                <div class="header-badge">Data Science Studio</div>
+            </div>
 
-    <!-- Featured Projects Section -->
-    <section id="projects" class="section">
-        <h2>Featured Client Projects</h2>
-        <div class="grid">
-            <div class="card project-card">
-                <h3>E-Commerce Platform</h3>
-                <p>High-performance web shop interface with instant search filtering and cart management.</p>
-                <div class="project-tags">
-                    <span class="tag">HTML5</span>
-                    <span class="tag">CSS3</span>
-                    <span class="tag">JavaScript</span>
+            <!-- Live Data Science Metrics -->
+            <div class="dashboard-stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Datasets Processed</span>
+                    <span class="stat-value gradient-text">8.4 TB</span>
+                    <span class="stat-sub text-green">↑ Real-time Ingestion</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Model Accuracy</span>
+                    <span class="stat-value">98.4%</span>
+                    <span class="stat-sub">Cross-Validated Metrics</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Inference Speed</span>
+                    <span class="stat-value">8ms</span>
+                    <span class="stat-sub text-green">Optimized GPU Clusters</span>
                 </div>
             </div>
 
-            <div class="card project-card">
-                <h3>Enterprise Dashboard</h3>
-                <p>Data visualization layout utilizing responsive CSS grid systems and custom SVG dashboards.</p>
-                <div class="project-tags">
-                    <span class="tag">HTML5</span>
-                    <span class="tag">CSS3</span>
-                    <span class="tag">Analytics</span>
+            <!-- Command Studio Input Bar -->
+            <div class="command-bar-wrapper">
+                <div class="command-input-container">
+                    <span class="command-icon">📈</span>
+                    <input type="text" id="aiInput" placeholder="Query data pipelines or models (e.g., 'Run EDA on Sales Dataset')..." autocomplete="off">
+                    <button class="command-mic" id="micBtn" title="Voice Command">🎙️</button>
+                    <button class="command-btn btn-glow" id="sendBtn">Execute</button>
                 </div>
+                <div class="quick-tags">
+                    <span class="tag-label">Quick Actions:</span>
+                    <button class="quick-action-btn" onclick="fillPrompt('Automated EDA Report')">📊 Automated EDA</button>
+                    <button class="quick-action-btn" onclick="fillPrompt('Feature Engineering Pipeline')">⚙️ Feature Pipeline</button>
+                    <button class="quick-action-btn" onclick="fillPrompt('Train XGBoost Classifier')">🧠 Train XGBoost</button>
+                </div>
+            </div>
+
+            <div id="aiResponse" class="ai-response-box" style="display: none;"></div>
+        </div>
+    </section>
+
+    <!-- Platform Modules Section -->
+    <section id="platform" class="section">
+        <div class="section-header">
+            <span class="section-tag">DATA SCIENCE MODULES</span>
+            <h2>End-to-End Data Science Lifecycle</h2>
+        </div>
+
+        <div class="grid">
+            <div class="card platform-card glass-panel">
+                <div class="card-icon-box">📊</div>
+                <h3>Exploratory Data Analysis</h3>
+                <p>Automate statistical profiling, correlation discovery, and data visualization across massive datasets.</p>
+                <a href="#contact" class="card-link">Learn More &rarr;</a>
+            </div>
+
+            <div class="card platform-card glass-panel">
+                <div class="card-icon-box">⚙️</div>
+                <h3>Feature Engineering & Store</h3>
+                <p>Build, manage, and share standardized feature sets for reproducible machine learning workflows.</p>
+                <a href="#contact" class="card-link">Learn More &rarr;</a>
+            </div>
+
+            <div class="card platform-card glass-panel">
+                <div class="card-icon-box">🧠</div>
+                <h3>Predictive Modeling & AutoML</h3>
+                <p>Train state-of-the-art Deep Learning, XGBoost, and Time-Series algorithms with automated tuning.</p>
+                <a href="#contact" class="card-link">Learn More &rarr;</a>
+            </div>
+
+            <div class="card platform-card glass-panel">
+                <div class="card-icon-box">🔍</div>
+                <h3>Explainable AI (XAI)</h3>
+                <p>Uncover model decisions using SHAP, LIME, and feature importance matrices for executive reporting.</p>
+                <a href="#contact" class="card-link">Learn More &rarr;</a>
             </div>
         </div>
     </section>
 
-    <!-- Interactive Skills & Workshop Section -->
+    <!-- Technical Capabilities -->
     <section id="skills" class="section">
-        <h2>Technical Expertise <small class="skills-instruction">(Click any skill to register for a live session)</small></h2>
+        <div class="section-header">
+            <span class="section-tag">TECHNICAL CAPABILITIES</span>
+            <h2>Core Competencies</h2>
+        </div>
         <div class="skills-container">
-            <a href="register.html?skill=html" class="skill-chip">HTML5 & Web Standards</a>
-            <a href="register.html?skill=css" class="skill-chip">CSS3 & Grid Design</a>
-            <a href="register.html?skill=javascript" class="skill-chip">JavaScript (ES6+)</a>
-            <a href="register.html?skill=git" class="skill-chip">Git & GitHub</a>
-            <a href="register.html?skill=responsive" class="skill-chip">Responsive Agency Architecture</a>
+            <a href="register.html?skill=python-ds" class="skill-chip">Python / Pandas / NumPy</a>
+            <a href="register.html?skill=ml" class="skill-chip">Scikit-Learn & PyTorch</a>
+            <a href="register.html?skill=viz" class="skill-chip">Data Visualization (Tableau/D3)</a>
+            <a href="register.html?skill=sql" class="skill-chip">Advanced SQL & BigQuery</a>
+            <a href="register.html?skill=xai" class="skill-chip">Explainable AI Frameworks</a>
         </div>
     </section>
 
-    <!-- Small Compact Contact Section -->
+    <!-- Contact Section -->
     <section id="contact" class="section small-contact-section">
-        <h2>Contact IT Clan Tech</h2>
-        <form id="contactForm" class="card form-card small-form" novalidate>
-            <div class="form-row">
-                <div class="form-group flex-1">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" placeholder="Your Full Name" required>
-                    <small class="error-message" id="nameError"></small>
+        <div class="card glass-panel form-card">
+            <h2>Partner with SynapseAI</h2>
+            <p class="form-subtitle">Get in touch with Md. Amdadul Islam for custom data science solutions or analytics architecture.</p>
+            <form id="contactForm" novalidate>
+                <div class="form-row">
+                    <div class="form-group flex-1">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your Name" required>
+                        <small class="error-message" id="nameError"></small>
+                    </div>
+                    <div class="form-group flex-1">
+                        <label for="email">Work Email</label>
+                        <input type="email" id="email" placeholder="name@company.com" required>
+                        <small class="error-message" id="emailError"></small>
+                    </div>
                 </div>
-                <div class="form-group flex-1">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Your Email Address" required>
-                    <small class="error-message" id="emailError"></small>
+                <div class="form-group">
+                    <label for="message">Project Requirements</label>
+                    <textarea id="message" rows="3" placeholder="Tell us about your data analysis, modeling, or analytics goals..." required></textarea>
+                    <small class="error-message" id="messageError"></small>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" rows="2" placeholder="Tell us about your project..." required></textarea>
-                <small class="error-message" id="messageError"></small>
-            </div>
-            <button type="submit" class="btn primary-btn small-btn">Send Message</button>
-            <div id="formSuccess" class="success-message"></div>
-        </form>
+                <button type="submit" class="btn primary-btn btn-glow small-btn">Submit Project Brief</button>
+                <div id="formSuccess" class="success-message"></div>
+            </form>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Md. Amdadul Islam | IT Clan Tech. All rights reserved.</p>
+        <p>&copy; 2026 Md. Amdadul Islam | SynapseAI Enterprise Data Platform. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>

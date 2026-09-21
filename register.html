@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for Track | SynapseAI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body data-theme="dark">
+
+    <div class="bg-glow-container">
+        <div class="glow-sphere glow-1"></div>
+        <div class="glow-sphere glow-2"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo-container">
+            <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.6rem;">
+                <div class="logo-icon-wrapper">
+                    <svg class="logo-icon" width="28" height="28" viewBox="0 0 100 100">
+                        <path d="M20 20 H80 V40 H40 V60 H80 V80 H20 Z" fill="url(#logo-grad)"/>
+                        <defs>
+                            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#00f2fe" />
+                                <stop offset="100%" stop-color="#4facfe" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">Synapse<span class="logo-accent">AI</span></span>
+            </a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html#platform" class="nav-link">Platform</a>
+            <a href="index.html#solutions" class="nav-link">Solutions</a>
+            <a href="index.html#skills" class="nav-link">Capabilities</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="index.html" class="btn secondary-btn" style="padding: 0.4rem 1rem; font-size: 0.85rem;">&larr; Back to Home</a>
+        </div>
+    </header>
+
+    <!-- Main Registration Section -->
+    <main class="section reg-container">
+        <div class="reg-grid">
+            
+            <!-- Dynamic Skill Info Panel -->
+            <div class="card glass-panel skill-info-panel">
+                <span class="section-tag" id="skillTag">SELECTED TRACK</span>
+                <h1 id="skillTitle" class="gradient-text">Data Science Capability Track</h1>
+                <p id="skillDescription" class="skill-desc">
+                    Loading capability track information...
+                </p>
+
+                <div class="track-highlights">
+                    <h3>Track Highlights</h3>
+                    <ul id="skillHighlights" class="highlights-list">
+                        <li>Real-world hands-on projects</li>
+                        <li>Enterprise-grade pipeline design</li>
+                        <li>Direct collaboration with Md. Amdadul Islam</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Registration Form Panel -->
+            <div class="card glass-panel form-card">
+                <h2>Track Registration</h2>
+                <p class="form-subtitle">Enroll or request consultancy in this core technical module.</p>
+                
+                <form id="registrationForm" novalidate>
+                    <div class="form-group">
+                        <label for="regSkill">Selected Track / Skill</label>
+                        <input type="text" id="regSkill" readonly style="background: rgba(255,255,255,0.05); cursor: not-allowed;">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label for="regName">Full Name</label>
+                            <input type="text" id="regName" placeholder="Your Name" required>
+                            <small class="error-message" id="regNameError"></small>
+                        </div>
+                        <div class="form-group flex-1">
+                            <label for="regEmail">Email Address</label>
+                            <input type="email" id="regEmail" placeholder="name@company.com" required>
+                            <small class="error-message" id="regEmailError"></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="regRole">Role / Organization</label>
+                        <input type="text" id="regRole" placeholder="e.g. Data Analyst, Engineer, Enterprise Lead">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="regMessage">Goals & Expectations</label>
+                        <textarea id="regMessage" rows="3" placeholder="Describe your team's goals or learning objectives for this track..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn primary-btn btn-glow small-btn">Confirm Registration</button>
+                    <div id="regSuccess" class="success-message"></div>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Md. Amdadul Islam | SynapseAI Enterprise Data Platform. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Data Dictionary for Skills
+        const skillsData = {
+            'python-ds': {
+                title: 'Python / Pandas / NumPy',
+                tag: 'DATA SCIENCE CORE',
+                desc: 'Master the foundation of modern data analysis, vectorization, array processing, and complex data wrangling using Pandas and NumPy.',
+                highlights: [
+                    'Exploratory data analysis on high-dimensional arrays',
+                    'High-performance data manipulation with Pandas',
+                    'Memory optimization techniques for large datasets'
+                ]
+            },
+            'ml': {
+                title: 'Scikit-Learn & PyTorch',
+                tag: 'MACHINE LEARNING & DEEP LEARNING',
+                desc: 'Build, evaluate, and fine-tune traditional machine learning algorithms alongside neural networks using PyTorch and Scikit-Learn.',
+                highlights: [
+                    'Supervised and unsupervised algorithm pipelines',
+                    'Custom PyTorch neural network architectures',
+                    'Hyperparameter tuning and cross-validation strategies'
+                ]
+            },
+            'viz': {
+                title: 'Data Visualization (Tableau / D3)',
+                tag: 'BUSINESS INTELLIGENCE & VISUALS',
+                desc: 'Transform raw analytical outputs into actionable, interactive dashboards and bespoke custom graphics using D3.js and Tableau.',
+                highlights: [
+                    'Executive-ready dynamic dashboards in Tableau',
+                    'Custom interactive web charts with D3.js',
+                    'Visual storytelling with enterprise data'
+                ]
+            },
+            'sql': {
+                title: 'Advanced SQL & BigQuery',
+                tag: 'BIG DATA ENGINE',
+                desc: 'Construct enterprise analytical queries using window functions, CTEs, and large-scale data warehouse solutions like Google BigQuery.',
+                highlights: [
+                    'Optimizing query latency over multi-terabyte tables',
+                    'Complex analytical SQL (CTEs, Windowing, Aggregations)',
+                    'BigQuery warehouse architecture design'
+                ]
+            },
+            'xai': {
+                title: 'Explainable AI Frameworks',
+                tag: 'MODEL INTERPRETABILITY',
+                desc: 'Unbox "black box" machine learning models using SHAP, LIME, and feature importance matrices for transparent model governance.',
+                highlights: [
+                    'SHAP and LIME model interpretation',
+                    'Bias detection and fairness auditing in AI',
+                    'Regulatory compliance and model transparency reporting'
+                ]
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Read query parameter from URL (e.g., register.html?skill=python-ds)
+            const urlParams = new URLSearchParams(window.location.search);
+            const skillKey = urlParams.get('skill') || 'python-ds';
+
+            const skillInfo = skillsData[skillKey] || skillsData['python-ds'];
+
+            // Render details dynamically
+            document.getElementById('skillTitle').textContent = skillInfo.title;
+            document.getElementById('skillTag').textContent = skillInfo.tag;
+            document.getElementById('skillDescription').textContent = skillInfo.desc;
+            document.getElementById('regSkill').value = skillInfo.title;
+
+            const highlightsList = document.getElementById('skillHighlights');
+            highlightsList.innerHTML = skillInfo.highlights.map(item => `<li>${item}</li>`).join('');
+
+            // Handle Registration Form Submission
+            const form = document.getElementById('registrationForm');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let isValid = true;
+
+                const name = document.getElementById('regName').value.trim();
+                const email = document.getElementById('regEmail').value.trim();
+                
+                document.getElementById('regNameError').textContent = '';
+                document.getElementById('regEmailError').textContent = '';
+                document.getElementById('regSuccess').textContent = '';
+
+                if (!name) {
+                    document.getElementById('regNameError').textContent = 'Full name is required.';
+                    isValid = false;
+                }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    document.getElementById('regEmailError').textContent = 'Valid email is required.';
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    document.getElementById('regSuccess').textContent = `Successfully registered for "${skillInfo.title}"! We will contact you shortly.`;
+                    form.reset();
+                    document.getElementById('regSkill').value = skillInfo.title;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
