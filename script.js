@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Hamburger Mobile Navigation
+    // 3. Mobile Navigation Menu Toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
     if (hamburger && navLinks) {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Contact Form Validation Logic
+    // 4. Contact Form Validation
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
@@ -53,23 +53,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = document.getElementById('message').value.trim();
 
             if (!name) {
-                document.getElementById('nameError').textContent = 'Name required.';
+                document.getElementById('nameError').textContent = 'Name is required.';
                 isValid = false;
             }
 
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(email)) {
-                document.getElementById('emailError').textContent = 'Invalid email.';
+                document.getElementById('emailError').textContent = 'Enter a valid email.';
                 isValid = false;
             }
 
             if (message.length < 5) {
-                document.getElementById('messageError').textContent = 'Message too short.';
+                document.getElementById('messageError').textContent = 'Message must be at least 5 characters.';
                 isValid = false;
             }
 
             if (isValid) {
-                document.getElementById('formSuccess').textContent = 'Sent successfully!';
+                document.getElementById('formSuccess').textContent = 'Message sent successfully!';
                 contactForm.reset();
             }
         });
