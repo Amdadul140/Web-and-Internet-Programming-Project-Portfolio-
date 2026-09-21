@@ -1,7 +1,7 @@
-// Interactive Features: Theme Switcher, Responsive Menu, Contact Validation, and Skill Registration Processing
+// Interactive Features: Theme Switcher, Responsive Navigation, Compact Contact Validation, Skill Selection
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Light/Dark Theme Switcher (Stored in LocalStorage)
+    // 1. Dark / Light Theme Toggle
     const themeToggleBtn = document.getElementById('themeToggle');
     if (themeToggleBtn) {
         const savedTheme = localStorage.getItem('theme') || 'light';
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Mobile Navigation Hamburger Menu Toggle
+    // 2. Mobile Responsive Navigation
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
     if (hamburger && navLinks) {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Contact Form Validation (On index.html)
+    // 3. Compact Contact Form Validation (On index.html)
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
@@ -45,29 +45,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = document.getElementById('message').value.trim();
 
             if (!name) {
-                document.getElementById('nameError').textContent = 'Name is required.';
+                document.getElementById('nameError').textContent = 'Name required.';
                 isValid = false;
             }
 
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(email)) {
-                document.getElementById('emailError').textContent = 'Enter a valid email address.';
+                document.getElementById('emailError').textContent = 'Invalid email.';
                 isValid = false;
             }
 
-            if (message.length < 10) {
-                document.getElementById('messageError').textContent = 'Message must be at least 10 characters long.';
+            if (message.length < 5) {
+                document.getElementById('messageError').textContent = 'Message too short.';
                 isValid = false;
             }
 
             if (isValid) {
-                document.getElementById('formSuccess').textContent = 'Thank you! Your message has been sent successfully.';
+                document.getElementById('formSuccess').textContent = 'Sent successfully!';
                 contactForm.reset();
             }
         });
     }
 
-    // 4. Auto-Select Skill in Registration Form from URL Query Parameter
+    // 4. Auto-Select Skill from URL Parameter
     const regSkillSelect = document.getElementById('regSkill');
     if (regSkillSelect) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 5. Registration Form Validation & Submission Handling (On register.html)
+    // 5. Registration Form Processing & Validation (On register.html)
     const regForm = document.getElementById('registrationForm');
     if (regForm) {
         regForm.addEventListener('submit', (e) => {
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (isValid) {
-                document.getElementById('regSuccess').textContent = `Registration Successful! You are scheduled for ${skill.toUpperCase()} on ${day} at ${time}.`;
+                document.getElementById('regSuccess').textContent = `Registration Successful! Scheduled for ${skill.toUpperCase()} on ${day} at ${time}.`;
                 regForm.reset();
             }
         });

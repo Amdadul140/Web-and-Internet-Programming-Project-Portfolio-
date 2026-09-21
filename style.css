@@ -7,6 +7,8 @@
     --border-color: #e2e8f0;
     --subtext-color: #64748b;
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --banner-bg: #eff6ff;
+    --banner-text: #1e40af;
 }
 
 /* Dark Theme Variables */
@@ -18,6 +20,8 @@
     --border-color: #334155;
     --subtext-color: #94a3b8;
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    --banner-bg: #1e3a8a;
+    --banner-text: #dbeafe;
 }
 
 /* Base Styles */
@@ -33,6 +37,31 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
+}
+
+/* Notification / Headline Banner */
+.notification-banner {
+    background-color: var(--banner-bg);
+    color: var(--banner-text);
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.notification-banner .badge {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    text-transform: uppercase;
 }
 
 /* Navbar & Logo */
@@ -106,7 +135,7 @@ body {
 
 /* Hero Section */
 .hero {
-    padding: 5rem 2rem;
+    padding: 4rem 2rem;
     text-align: center;
 }
 
@@ -123,11 +152,11 @@ body {
 .section {
     max-width: 900px;
     margin: 0 auto;
-    padding: 3rem 1.5rem;
+    padding: 2.5rem 1.5rem;
 }
 
 .section h2 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     border-left: 4px solid var(--accent-color);
     padding-left: 0.75rem;
 }
@@ -195,7 +224,31 @@ body {
     transform: translateY(-2px);
 }
 
-/* Buttons & Form Controls */
+/* Small Compact Contact Form Styling */
+.small-contact-section {
+    max-width: 650px;
+}
+
+.small-form {
+    padding: 1.25rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.small-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+/* General Buttons & Inputs */
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -212,45 +265,47 @@ body {
 }
 
 .form-group {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
 }
 
 .form-group label {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
     font-weight: 500;
+    font-size: 0.9rem;
 }
 
 .form-group input, 
 .form-group textarea, 
 .form-group select {
-    padding: 0.6rem;
+    padding: 0.5rem;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 .error-message {
     color: #ef4444;
     font-size: 0.8rem;
-    margin-top: 0.25rem;
+    margin-top: 0.2rem;
 }
 
 .success-message {
     color: #22c55e;
-    margin-top: 1rem;
+    margin-top: 0.75rem;
     font-weight: 600;
+    font-size: 0.9rem;
 }
 
 footer {
     text-align: center;
-    padding: 2rem;
+    padding: 1.5rem;
     border-top: 1px solid var(--border-color);
     color: var(--subtext-color);
-    margin-top: 3rem;
+    margin-top: 2.5rem;
 }
 
 /* Mobile Responsiveness */
@@ -273,5 +328,10 @@ footer {
 
     .nav-links.active {
         display: flex;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
     }
 }

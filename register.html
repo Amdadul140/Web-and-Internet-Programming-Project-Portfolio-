@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navbar -->
+    <!-- Top Headline Banner -->
+    <div class="notification-banner">
+        <span class="badge">INFO</span>
+        <span class="banner-text">📌 Pick your skill and select a convenient Day and Time slot below.</span>
+    </div>
+
+    <!-- Header / Navbar -->
     <header class="navbar">
         <div class="logo-container">
             <svg class="logo-icon" width="40" height="40" viewBox="0 0 100 100">
@@ -27,21 +33,18 @@
     <section class="section">
         <h2>Skill Session Registration</h2>
         <form id="registrationForm" class="card form-card" novalidate>
-            <!-- Full Name Input -->
             <div class="form-group">
                 <label for="regName">Full Name</label>
                 <input type="text" id="regName" placeholder="Enter your full name" required>
                 <small class="error-message" id="regNameError"></small>
             </div>
 
-            <!-- Email Address Input -->
             <div class="form-group">
                 <label for="regEmail">Email Address</label>
                 <input type="email" id="regEmail" placeholder="Enter your email address" required>
                 <small class="error-message" id="regEmailError"></small>
             </div>
 
-            <!-- Skill Option Dropdown -->
             <div class="form-group">
                 <label for="regSkill">Select Technical Skill</label>
                 <select id="regSkill" required>
@@ -55,7 +58,6 @@
                 <small class="error-message" id="regSkillError"></small>
             </div>
 
-            <!-- Day Selection Option -->
             <div class="form-group">
                 <label for="regDay">Preferred Day</label>
                 <select id="regDay" required>
@@ -68,7 +70,6 @@
                 <small class="error-message" id="regDayError"></small>
             </div>
 
-            <!-- Time Selection Option -->
             <div class="form-group">
                 <label for="regTime">Preferred Time Slot</label>
                 <select id="regTime" required>
