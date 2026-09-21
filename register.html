@@ -115,7 +115,6 @@
     </footer>
 
     <script>
-        // Data Dictionary for Skills
         const skillsData = {
             'python-ds': {
                 title: 'Python / Pandas / NumPy',
@@ -170,13 +169,10 @@
         };
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Read query parameter from URL (e.g., register.html?skill=python-ds)
             const urlParams = new URLSearchParams(window.location.search);
             const skillKey = urlParams.get('skill') || 'python-ds';
-
             const skillInfo = skillsData[skillKey] || skillsData['python-ds'];
 
-            // Render details dynamically
             document.getElementById('skillTitle').textContent = skillInfo.title;
             document.getElementById('skillTag').textContent = skillInfo.tag;
             document.getElementById('skillDescription').textContent = skillInfo.desc;
@@ -185,7 +181,6 @@
             const highlightsList = document.getElementById('skillHighlights');
             highlightsList.innerHTML = skillInfo.highlights.map(item => `<li>${item}</li>`).join('');
 
-            // Handle Registration Form Submission
             const form = document.getElementById('registrationForm');
             form.addEventListener('submit', (e) => {
                 e.preventDefault();

@@ -126,4 +126,4 @@ function fillPrompt(text) {
         aiInput.value = text;
         handleAISearch(text);
     }
-}
+}ss
