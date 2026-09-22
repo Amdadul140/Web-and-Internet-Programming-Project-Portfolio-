@@ -4,7 +4,7 @@
 const CONFIG = {
     personal: {
         name: "Md. Amdadul Islam",
-        titleRoles: ["Developer"],
+        titleRoles: ["Junior Developer", "Junior Networking Engineer "],
         phone: "01537586283",
         email: "mdamdadulislam140@gmail.com",
         location: "Tejgaon, Dhaka-1215",
@@ -15,6 +15,7 @@ const CONFIG = {
         stats: {
             experience: "Fresher",
             completedProjects: "2+",
+            happyClients: "5+"
         }
     },
     
@@ -99,119 +100,160 @@ const CONFIG = {
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize AOS Animation Library
-    AOS.init({ duration: 800, once: true });
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 800, once: true });
+    }
 
     // Set Current Year
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+    const yearEl = document.getElementById('current-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // Render Personal Info
-    document.getElementById('nav-brand').textContent = CONFIG.personal.name;
-    document.getElementById('hero-name').textContent = CONFIG.personal.name;
-    document.getElementById('hero-bio').textContent = CONFIG.personal.bio;
-    document.getElementById('hero-img').src = CONFIG.personal.profileImage;
-    document.getElementById('stat-exp').textContent = CONFIG.personal.stats.experience;
-    document.getElementById('about-title').textContent = CONFIG.personal.aboutTitle;
-    document.getElementById('about-description').textContent = CONFIG.personal.aboutDesc;
-    document.getElementById('stat-projects').textContent = CONFIG.personal.stats.completedProjects;
-    document.getElementById('stat-clients').textContent = CONFIG.personal.stats.happyClients;
+    const navBrand = document.getElementById('nav-brand');
+    if (navBrand) navBrand.textContent = CONFIG.personal.name;
 
-    document.getElementById('contact-phone').textContent = CONFIG.personal.phone;
-    document.getElementById('contact-email').textContent = CONFIG.personal.email;
-    document.getElementById('contact-location').textContent = CONFIG.personal.location;
-    document.getElementById('footer-name').textContent = CONFIG.personal.name;
-    document.getElementById('google-map').src = CONFIG.mapEmbedUrl;
+    const heroName = document.getElementById('hero-name');
+    if (heroName) heroName.textContent = CONFIG.personal.name;
+
+    const heroBio = document.getElementById('hero-bio');
+    if (heroBio) heroBio.textContent = CONFIG.personal.bio;
+
+    const heroImg = document.getElementById('hero-img');
+    if (heroImg) heroImg.src = CONFIG.personal.profileImage;
+
+    const statExp = document.getElementById('stat-exp');
+    if (statExp) statExp.textContent = CONFIG.personal.stats.experience;
+
+    const aboutTitle = document.getElementById('about-title');
+    if (aboutTitle) aboutTitle.textContent = CONFIG.personal.aboutTitle;
+
+    const aboutDesc = document.getElementById('about-description');
+    if (aboutDesc) aboutDesc.textContent = CONFIG.personal.aboutDesc;
+
+    const statProjects = document.getElementById('stat-projects');
+    if (statProjects) statProjects.textContent = CONFIG.personal.stats.completedProjects;
+
+    const statClients = document.getElementById('stat-clients');
+    if (statClients) statClients.textContent = CONFIG.personal.stats.happyClients || "5+";
+
+    const contactPhone = document.getElementById('contact-phone');
+    if (contactPhone) contactPhone.textContent = CONFIG.personal.phone;
+
+    const contactEmail = document.getElementById('contact-email');
+    if (contactEmail) contactEmail.textContent = CONFIG.personal.email;
+
+    const contactLocation = document.getElementById('contact-location');
+    if (contactLocation) contactLocation.textContent = CONFIG.personal.location;
+
+    const footerName = document.getElementById('footer-name');
+    if (footerName) footerName.textContent = CONFIG.personal.name;
+
+    const googleMap = document.getElementById('google-map');
+    if (googleMap) googleMap.src = CONFIG.mapEmbedUrl;
 
     // Personal Info Grid
     const personalGrid = document.getElementById('personal-info-grid');
-    personalGrid.innerHTML = `
-        <div><span class="text-gray-400 text-sm">Phone:</span> <p class="font-medium text-white">${CONFIG.personal.phone}</p></div>
-        <div><span class="text-gray-400 text-sm">Email:</span> <p class="font-medium text-white">${CONFIG.personal.email}</p></div>
-        <div><span class="text-gray-400 text-sm">Location:</span> <p class="font-medium text-white">${CONFIG.personal.location}</p></div>
-        <div><span class="text-gray-400 text-sm">Status:</span> <p class="font-medium text-brand">Available for Hire</p></div>
-    `;
+    if (personalGrid) {
+        personalGrid.innerHTML = `
+            <div><span class="text-gray-400 text-sm">Phone:</span> <p class="font-medium text-white">${CONFIG.personal.phone}</p></div>
+            <div><span class="text-gray-400 text-sm">Email:</span> <p class="font-medium text-white">${CONFIG.personal.email}</p></div>
+            <div><span class="text-gray-400 text-sm">Location:</span> <p class="font-medium text-white">${CONFIG.personal.location}</p></div>
+            <div><span class="text-gray-400 text-sm">Status:</span> <p class="font-medium text-brand">Available for Hire</p></div>
+        `;
+    }
 
     // Render Social Links
     const socialContainer = document.getElementById('hero-socials');
-    CONFIG.socials.forEach(s => {
-        socialContainer.innerHTML += `
-            <a href="${s.link}" target="_blank" class="w-10 h-10 glassmorphism rounded-xl flex items-center justify-center text-gray-300 hover:text-brand hover:border-brand transition-all">
-                <i class="${s.icon}"></i>
-            </a>
-        `;
-    });
+    if (socialContainer) {
+        CONFIG.socials.forEach(s => {
+            socialContainer.innerHTML += `
+                <a href="${s.link}" target="_blank" class="w-10 h-10 glassmorphism rounded-xl flex items-center justify-center text-gray-300 hover:text-brand hover:border-brand transition-all">
+                    <i class="${s.icon}"></i>
+                </a>
+            `;
+        });
+    }
 
     // Render Skills
     const skillsContainer = document.getElementById('skills-container');
-    CONFIG.skills.forEach(skill => {
-        skillsContainer.innerHTML += `
-            <div class="glassmorphism-card p-5 rounded-2xl" data-aos="zoom-in">
-                <div class="flex justify-between items-center mb-2">
-                    <span class="font-semibold text-white">${skill.name}</span>
-                    <span class="text-brand text-sm font-bold">${skill.level}</span>
+    if (skillsContainer) {
+        CONFIG.skills.forEach(skill => {
+            skillsContainer.innerHTML += `
+                <div class="glassmorphism-card p-5 rounded-2xl" data-aos="zoom-in">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-semibold text-white">${skill.name}</span>
+                        <span class="text-brand text-sm font-bold">${skill.level}</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
+                        <div class="bg-brand h-2.5 rounded-full" style="width: ${skill.level}"></div>
+                    </div>
                 </div>
-                <div class="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
-                    <div class="bg-brand h-2.5 rounded-full" style="width: ${skill.level}"></div>
-                </div>
-            </div>
-        `;
-    });
+            `;
+        });
+    }
 
     // Render Experience
     const expContainer = document.getElementById('experience-container');
-    CONFIG.experience.forEach(exp => {
-        expContainer.innerHTML += `
-            <div class="relative pl-8" data-aos="fade-up">
-                <div class="absolute -left-[11px] top-1.5 w-5 h-5 bg-brand rounded-full border-4 border-gray-900"></div>
-                <div class="glassmorphism-card p-6 rounded-2xl">
-                    <span class="text-xs text-brand font-semibold uppercase tracking-wider">${exp.duration}</span>
-                    <h3 class="text-xl font-bold font-heading text-white mt-1">${exp.role}</h3>
-                    <h4 class="text-sm text-gray-400 font-medium mb-3">${exp.company}</h4>
-                    <p class="text-gray-300 text-sm">${exp.desc}</p>
+    if (expContainer) {
+        CONFIG.experience.forEach(exp => {
+            expContainer.innerHTML += `
+                <div class="relative pl-8" data-aos="fade-up">
+                    <div class="absolute -left-[11px] top-1.5 w-5 h-5 bg-brand rounded-full border-4 border-gray-900"></div>
+                    <div class="glassmorphism-card p-6 rounded-2xl">
+                        <span class="text-xs text-brand font-semibold uppercase tracking-wider">${exp.duration}</span>
+                        <h3 class="text-xl font-bold font-heading text-white mt-1">${exp.role}</h3>
+                        <h4 class="text-sm text-gray-400 font-medium mb-3">${exp.company}</h4>
+                        <p class="text-gray-300 text-sm">${exp.desc}</p>
+                    </div>
                 </div>
-            </div>
-        `;
-    });
+            `;
+        });
+    }
 
     // Render Portfolio
     const portfolioContainer = document.getElementById('portfolio-container');
-    CONFIG.portfolio.forEach(item => {
-        portfolioContainer.innerHTML += `
-            <div class="glassmorphism-card rounded-2xl overflow-hidden group" data-aos="fade-up">
-                <div class="portfolio-img-container">
-                    <img src="${item.image}" alt="${item.title}" class="portfolio-img">
-                </div>
-                <div class="p-6">
-                    <span class="text-xs text-brand font-semibold uppercase tracking-wider">${item.category}</span>
-                    <h3 class="text-xl font-bold font-heading text-white mt-1 mb-4">${item.title}</h3>
-                    <div class="flex space-x-4">
-                        <a href="${item.liveUrl}" target="_blank" class="flex-1 gradient-btn py-2 text-center rounded-xl text-sm font-semibold text-white">
-                            Live Demo <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
-                        </a>
-                        <a href="${item.githubUrl}" target="_blank" class="w-10 h-10 glassmorphism rounded-xl flex items-center justify-center text-white hover:text-brand transition-colors">
-                            <i class="fa-brands fa-github text-lg"></i>
-                        </a>
+    if (portfolioContainer) {
+        CONFIG.portfolio.forEach(item => {
+            portfolioContainer.innerHTML += `
+                <div class="glassmorphism-card rounded-2xl overflow-hidden group" data-aos="fade-up">
+                    <div class="portfolio-img-container">
+                        <img src="${item.image}" alt="${item.title}" class="portfolio-img">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-brand font-semibold uppercase tracking-wider">${item.category}</span>
+                        <h3 class="text-xl font-bold font-heading text-white mt-1 mb-4">${item.title}</h3>
+                        <div class="flex space-x-4">
+                            <a href="${item.liveUrl}" target="_blank" class="flex-1 gradient-btn py-2 text-center rounded-xl text-sm font-semibold text-white">
+                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                            </a>
+                            <a href="${item.githubUrl}" target="_blank" class="w-10 h-10 glassmorphism rounded-xl flex items-center justify-center text-white hover:text-brand transition-colors">
+                                <i class="fa-brands fa-github text-lg"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
-    });
+            `;
+        });
+    }
 
     // Render Testimonials
     const testContainer = document.getElementById('testimonials-container');
-    CONFIG.testimonials.forEach(t => {
-        testContainer.innerHTML += `
-            <div class="glassmorphism-card p-6 rounded-2xl flex flex-col justify-between" data-aos="fade-up">
-                <p class="text-gray-300 italic mb-6">"${t.text}"</p>
-                <div class="flex items-center space-x-4">
-                    <img src="${t.avatar}" alt="${t.name}" class="w-12 h-12 rounded-full object-cover border-2 border-brand">
-                    <div>
-                        <h4 class="text-white font-bold text-sm">${t.name}</h4>
-                        <p class="text-xs text-gray-400">${t.designation}</p>
+    if (testContainer) {
+        CONFIG.testimonials.forEach(t => {
+            testContainer.innerHTML += `
+                <div class="glassmorphism-card p-6 rounded-2xl flex flex-col justify-between" data-aos="fade-up">
+                    <p class="text-gray-300 italic mb-6">"${t.text}"</p>
+                    <div class="flex items-center space-x-4">
+                        <img src="${t.avatar}" alt="${t.name}" class="w-12 h-12 rounded-full object-cover border-2 border-brand">
+                        <div>
+                            <h4 class="text-white font-bold text-sm">${t.name}</h4>
+                            <p class="text-xs text-gray-400">${t.designation}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
-    });
+            `;
+        });
+    }
 
     // Typing Effect Logic
     let roleIndex = 0;
@@ -220,7 +262,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const typingElement = document.getElementById('typing-text');
 
     function typeEffect() {
-        const currentRole = CONFIG.personal.titleRoles[roleIndex];
+        if (!typingElement) return;
+
+        const roles = CONFIG.personal.titleRoles || ["Web Developer"];
+        const currentRole = roles[roleIndex];
+
         if (isDeleting) {
             typingElement.textContent = currentRole.substring(0, charIndex - 1);
             charIndex--;
@@ -234,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(typeEffect, 2000);
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
-            roleIndex = (roleIndex + 1) % CONFIG.personal.titleRoles.length;
+            roleIndex = (roleIndex + 1) % roles.length;
             setTimeout(typeEffect, 500);
         } else {
             setTimeout(typeEffect, isDeleting ? 50 : 100);
@@ -245,70 +291,83 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    mobileBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
+    if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-    document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+    }
 
     // Contact Form Handler
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
 
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const submitBtn = document.getElementById('submit-btn');
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = `<span>Sending...</span> <i class="fa-solid fa-spinner animate-spin"></i>`;
-
-        const name = document.getElementById('form-name').value;
-        const phone = document.getElementById('form-phone').value;
-        const email = document.getElementById('form-email').value;
-        const message = document.getElementById('form-message').value;
-
-        const telegramMsg = `<b>New Portfolio Message!</b>\n\n<b>Name:</b> ${name}\n<b>Phone:</b> ${phone}\n<b>Email:</b> ${email}\n<b>Message:</b> ${message}`;
-
-        try {
-            // Telegram Bot Integration
-            if (CONFIG.telegramBotToken !== "YOUR_TELEGRAM_BOT_TOKEN") {
-                await fetch(`https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: CONFIG.telegramChatId,
-                        text: telegramMsg,
-                        parse_mode: 'HTML'
-                    })
-                });
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submit-btn');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<span>Sending...</span> <i class="fa-solid fa-spinner animate-spin"></i>`;
             }
 
-            // Google Sheet Script Integration
-            if (CONFIG.googleScriptUrl !== "YOUR_GOOGLE_APPS_SCRIPT_URL") {
-                await fetch(CONFIG.googleScriptUrl, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, phone, email, message })
-                });
-            }
+            const name = document.getElementById('form-name').value;
+            const phone = document.getElementById('form-phone').value;
+            const email = document.getElementById('form-email').value;
+            const message = document.getElementById('form-message').value;
 
-            formStatus.textContent = "Thank you! Your message has been sent successfully.";
-            formStatus.className = "text-center text-sm font-medium mt-2 text-green-400";
-            contactForm.reset();
-        } catch (error) {
-            formStatus.textContent = "An error occurred while sending your message. Please try again.";
-            formStatus.className = "text-center text-sm font-medium mt-2 text-red-400";
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = `<span>Send Message</span> <i class="fa-solid fa-paper-plane"></i>`;
-        }
-    });
+            const telegramMsg = `<b>New Portfolio Message!</b>\n\n<b>Name:</b> ${name}\n<b>Phone:</b> ${phone}\n<b>Email:</b> ${email}\n<b>Message:</b> ${message}`;
+
+            try {
+                // Telegram Bot Integration
+                if (CONFIG.telegramBotToken !== "YOUR_TELEGRAM_BOT_TOKEN") {
+                    await fetch(`https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: CONFIG.telegramChatId,
+                            text: telegramMsg,
+                            parse_mode: 'HTML'
+                        })
+                    });
+                }
+
+                // Google Sheet Script Integration
+                if (CONFIG.googleScriptUrl !== "YOUR_GOOGLE_APPS_SCRIPT_URL") {
+                    await fetch(CONFIG.googleScriptUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, phone, email, message })
+                    });
+                }
+
+                if (formStatus) {
+                    formStatus.textContent = "Thank you! Your message has been sent successfully.";
+                    formStatus.className = "text-center text-sm font-medium mt-2 text-green-400";
+                }
+                contactForm.reset();
+            } catch (error) {
+                if (formStatus) {
+                    formStatus.textContent = "An error occurred while sending your message. Please try again.";
+                    formStatus.className = "text-center text-sm font-medium mt-2 text-red-400";
+                }
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = `<span>Send Message</span> <i class="fa-solid fa-paper-plane"></i>`;
+                }
+            }
+        });
+    }
 });
-// ==========================================
-// Dark / Light Theme Toggle
-// ==========================================
+
+/* ==========================================================================
+   Dark / Light Theme Toggle Functionality
+   ========================================================================== */
 const themeToggleBtn = document.getElementById('theme-toggle');
 const themeToggleIcon = document.getElementById('theme-toggle-icon');
 const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
