@@ -26,13 +26,49 @@ const CONFIG = {
         { icon: "fa-brands fa-facebook-f", link: "https://www.facebook.com/share/1CaBxrsPjv/" },
     ],
 
-    skills: [
-        { name: "Networking (CCNA / TCP-IP / Subnetting)", level: "80%" },
-        { name: "Laravel / PHP", level: "90%" },
-        { name: "WordPress / Custom Theme & Plugin", level: "95%" },
-        { name: "Tailwind CSS / Bootstrap", level: "90%" },
-        { name: "JavaScript / ES6+", level: "85%" },
-        { name: "MySQL / Database Management", level: "80%" }
+  skills: [
+        {
+            category: "Networking & Infrastructure",
+            icon: "fa-solid fa-network-wired",
+            color: "from-blue-500 to-indigo-500",
+            tags: ["CCNA", "OSI Model", "TCP/IP", "Routing & Switching", "Subnetting", "Network Troubleshooting"],
+            level: "80%"
+        },
+        {
+            category: "Backend Development",
+            icon: "fa-solid fa-server",
+            color: "from-indigo-500 to-purple-500",
+            tags: ["Laravel", "PHP", "MySQL", "Database Architecture", "REST API"],
+            level: "90%"
+        },
+        {
+            category: "CMS & Custom Solutions",
+            icon: "fa-brands fa-wordpress",
+            color: "from-sky-500 to-blue-600",
+            tags: ["WordPress", "Custom Themes", "Plugin Development", "WooCommerce"],
+            level: "95%"
+        },
+        {
+            category: "Frontend Frameworks & UI",
+            icon: "fa-solid fa-code",
+            color: "from-cyan-400 to-blue-500",
+            tags: ["Tailwind CSS", "Bootstrap 5", "HTML5", "CSS3 / SASS"],
+            level: "90%"
+        },
+        {
+            category: "Core Scripting & Logic",
+            icon: "fa-brands fa-js",
+            color: "from-yellow-400 to-amber-500",
+            tags: ["JavaScript", "ES6+", "Async/Fetch API", "DOM Manipulation"],
+            level: "85%"
+        },
+        {
+            category: "Database & Systems",
+            icon: "fa-solid fa-database",
+            color: "from-emerald-400 to-teal-600",
+            tags: ["MySQL", "Relational DB", "Query Optimization", "System Admin"],
+            level: "80%"
+        }
     ],
 
     experience: [
@@ -212,19 +248,34 @@ if (personalGrid) {
         });
     }
 
-    // Render Skills
-    const skillsContainer = document.getElementById('skills-container');
+  const skillsContainer = document.getElementById('skills-container');
     if (skillsContainer) {
         skillsContainer.innerHTML = '';
         CONFIG.skills.forEach(skill => {
+            const tagsHtml = skill.tags.map(tag => 
+                `<span class="px-2.5 py-1 text-xs font-medium bg-slate-800/80 text-gray-300 rounded-lg border border-slate-700/60 hover:border-blue-500/40 transition-colors">${tag}</span>`
+            ).join('');
+
             skillsContainer.innerHTML += `
-                <div class="glassmorphism-card p-5 rounded-2xl" data-aos="zoom-in">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="font-semibold text-white">${skill.name}</span>
-                        <span class="text-brand text-sm font-bold">${skill.level}</span>
+                <div class="p-6 rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 shadow-xl hover:border-blue-500/30 transition-all flex flex-col justify-between group" data-aos="zoom-in">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-gradient-to-br ${skill.color} flex items-center justify-center text-white text-lg shadow-lg">
+                                    <i class="${skill.icon}"></i>
+                                </div>
+                                <h3 class="font-bold text-white text-lg">${skill.category}</h3>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">${skill.level}</span>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 my-4">
+                            ${tagsHtml}
+                        </div>
                     </div>
-                    <div class="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
-                        <div class="bg-brand h-2.5 rounded-full" style="width: ${skill.level}"></div>
+
+                    <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden mt-2">
+                        <div class="bg-gradient-to-r ${skill.color} h-2 rounded-full transition-all duration-1000" style="width: ${skill.level}"></div>
                     </div>
                 </div>
             `;
