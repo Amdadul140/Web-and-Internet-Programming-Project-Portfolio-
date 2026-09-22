@@ -8,9 +8,8 @@ const CONFIG = {
         phone: "01537586283",
         email: "mdamdadulislam140@gmail.com",
         location: "Tejgaon, Dhaka-1215",
-        bio: "I am a professional web developer specializing in WordPress and Laravel frameworks, dedicated to crafting modern, secure, and high-performance websites and web applications.",
+        bio: "I am a final‑year Computer Science and Engineering student at Southeast University set to graduate in 2027. I love networking and IT infrastructure. I am learning CCNA concepts, the OSI/TCP‑IP model and IP subnetting. I also dabble in web development with HTML5 and CSS3. I am looking for internship or entry‑level opportunities, in Network Engineering, System Administration or IT Infrastructure.",
         aboutTitle: "Turning Concepts Into Digital Excellence",
-        aboutDesc: "With over 3+ years of experience, I build custom web applications, bespoke e-commerce platforms, custom themes, and web portals for global clients. My top priorities are clean code, fast loading speeds, and delivering a premium user experience.",
         profileImage: "suny.jpg", // Replace with your image URL
         stats: {
             experience: "Fresher",
