@@ -4,7 +4,7 @@
 const CONFIG = {
     personal: {
         name: "Md. Amdadul Islam",
-        titleRoles: ["Junior Developer"],
+        titleRoles: ["Developer"],
         phone: "01537586283",
         email: "mdamdadulislam140@gmail.com",
         location: "Tejgaon, Dhaka-1215",
@@ -306,3 +306,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+// ==========================================
+// Dark / Light Theme Toggle
+// ==========================================
+const themeToggleBtn = document.getElementById('theme-toggle');
+const themeToggleIcon = document.getElementById('theme-toggle-icon');
+const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+const themeToggleIconMobile = document.getElementById('theme-toggle-icon-mobile');
+
+// Check saved user preference from LocalStorage
+const currentTheme = localStorage.getItem('portfolio-theme') || 'dark';
+
+if (currentTheme === 'light') {
+    document.body.classList.add('light-theme');
+    updateThemeIcons('light');
+} else {
+    updateThemeIcons('dark');
+}
+
+function updateThemeIcons(theme) {
+    const isLight = theme === 'light';
+    const iconClass = isLight ? 'fa-solid fa-moon text-indigo-600' : 'fa-solid fa-sun text-yellow-400';
+    
+    if (themeToggleIcon) themeToggleIcon.className = iconClass;
+    if (themeToggleIconMobile) themeToggleIconMobile.className = iconClass;
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('light-theme');
+    const isLight = document.body.classList.contains('light-theme');
+    const newTheme = isLight ? 'light' : 'dark';
+    
+    localStorage.setItem('portfolio-theme', newTheme);
+    updateThemeIcons(newTheme);
+}
+
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', toggleTheme);
+}
+
+if (themeToggleMobileBtn) {
+    themeToggleMobileBtn.addEventListener('click', toggleTheme);
+}
