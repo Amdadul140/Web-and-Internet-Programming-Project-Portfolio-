@@ -4,13 +4,15 @@
 const CONFIG = {
     personal: {
         name: "Md. Amdadul Islam",
-        titleRoles: ["Junior Developer", "Junior Networking Engineer "],
+        titleRoles: ["Junior Developer", "Junior Networking Engineer"],
         phone: "01537586283",
         email: "mdamdadulislam140@gmail.com",
         location: "Tejgaon, Dhaka-1215",
         bio: "I am a final‑year Computer Science and Engineering student at Southeast University set to graduate in 2027. I love networking and IT infrastructure. I am learning CCNA concepts, the OSI/TCP‑IP model and IP subnetting. I also dabble in web development with HTML5 and CSS3. I am looking for internship or entry‑level opportunities, in Network Engineering, System Administration or IT Infrastructure.",
         aboutTitle: "Turning Concepts Into Digital Excellence",
+        aboutDesc: "Enthusiastic and detail-oriented final-year CSE student with a strong foundation in networking concepts and web technologies. Passionate about building resilient networks, managing systems, and delivering user-friendly web solutions.",
         profileImage: "suny.jpg", // Replace with your image URL
+        cvUrl: "CV.pdf", // Your CV PDF File path
         stats: {
             experience: "Fresher",
             completedProjects: "2+",
@@ -20,31 +22,25 @@ const CONFIG = {
     
     socials: [
         { icon: "fa-brands fa-github", link: "https://github.com/Amdadul140" },
-        { icon: "fa-brands fa-linkedin-in", link: "https://www.linkedin.com/in/md-amdadul-islam-6580933b2/" },
+        { icon: "fa-brands fa-linkedin-in", link: "https://www.linkedin.com/in/md-amdadul-islam-6580933b2" },
         { icon: "fa-brands fa-facebook-f", link: "https://www.facebook.com/share/1CaBxrsPjv/" },
     ],
 
     skills: [
+        { name: "Networking (CCNA / TCP-IP / Subnetting)", level: "80%" },
         { name: "Laravel / PHP", level: "90%" },
         { name: "WordPress / Custom Theme & Plugin", level: "95%" },
         { name: "Tailwind CSS / Bootstrap", level: "90%" },
         { name: "JavaScript / ES6+", level: "85%" },
-        { name: "MySQL / Database Management", level: "80%" },
-        { name: "RESTful API Development", level: "85%" }
+        { name: "MySQL / Database Management", level: "80%" }
     ],
 
     experience: [
         {
-            company: "Tech Solutions Ltd.",
-            role: "Senior Web Developer",
+            company: "Academic & Personal Projects",
+            role: "Network & Web Project Trainee",
             duration: "2023 - Present",
-            desc: "Architecting and developing custom web portals and enterprise applications using Laravel and WordPress."
-        },
-        {
-            company: "Creative IT Agency",
-            role: "WordPress Specialist",
-            duration: "2021 - 2023",
-            desc: "Designed custom WordPress themes, plugins, and implemented site performance and security optimizations."
+            desc: "Configured network topologies, subnetting models, and built custom web portals using modern web stacks."
         }
     ],
 
@@ -82,7 +78,7 @@ const CONFIG = {
         {
             name: "Sabrina Rahman",
             designation: "Founder, Fashion House",
-            text: "His expertise in WordPress customization and website speed optimization is truly commendable.",
+            text: "His expertise in web development and technical problem solving is truly commendable.",
             avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80"
         }
     ],
@@ -120,6 +116,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroImg = document.getElementById('hero-img');
     if (heroImg) heroImg.src = CONFIG.personal.profileImage;
 
+    // Attach CV Link to Download Button
+    const cvBtn = document.getElementById('download-cv-btn');
+    if (cvBtn) {
+        cvBtn.href = CONFIG.personal.cvUrl;
+        cvBtn.setAttribute('download', `${CONFIG.personal.name.replace(/\s+/g, '_')}_CV.pdf`);
+    }
+
     const statExp = document.getElementById('stat-exp');
     if (statExp) statExp.textContent = CONFIG.personal.stats.experience;
 
@@ -150,20 +153,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const googleMap = document.getElementById('google-map');
     if (googleMap) googleMap.src = CONFIG.mapEmbedUrl;
 
-    // Personal Info Grid
-    const personalGrid = document.getElementById('personal-info-grid');
-    if (personalGrid) {
-        personalGrid.innerHTML = `
-            <div><span class="text-gray-400 text-sm">Phone:</span> <p class="font-medium text-white">${CONFIG.personal.phone}</p></div>
-            <div><span class="text-gray-400 text-sm">Email:</span> <p class="font-medium text-white">${CONFIG.personal.email}</p></div>
-            <div><span class="text-gray-400 text-sm">Location:</span> <p class="font-medium text-white">${CONFIG.personal.location}</p></div>
-            <div><span class="text-gray-400 text-sm">Status:</span> <p class="font-medium text-brand">Available for Hire</p></div>
-        `;
-    }
+   // Personal Info Grid
+const personalGrid = document.getElementById('personal-info-grid');
+if (personalGrid) {
+    personalGrid.innerHTML = `
+        <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+            <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-sm shrink-0">
+                <i class="fa-solid fa-phone"></i>
+            </div>
+            <div>
+                <span class="text-gray-400 text-xs block">Phone</span>
+                <a href="tel:${CONFIG.personal.phone}" class="font-semibold text-white text-sm hover:text-blue-400 transition-colors">${CONFIG.personal.phone}</a>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+            <div class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-sm shrink-0">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div>
+                <span class="text-gray-400 text-xs block">Email</span>
+                <a href="mailto:${CONFIG.personal.email}" class="font-semibold text-white text-sm hover:text-indigo-400 transition-colors break-all">${CONFIG.personal.email}</a>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+            <div class="w-9 h-9 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-sm shrink-0">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+                <span class="text-gray-400 text-xs block">Location</span>
+                <p class="font-semibold text-white text-sm">${CONFIG.personal.location}</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+            <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm shrink-0">
+                <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <div>
+                <span class="text-gray-400 text-xs block">Status</span>
+                <p class="font-semibold text-emerald-400 text-sm">Available for Hire / Internship</p>
+            </div>
+        </div>
+    `;
+}
 
     // Render Social Links
     const socialContainer = document.getElementById('hero-socials');
     if (socialContainer) {
+        socialContainer.innerHTML = '';
         CONFIG.socials.forEach(s => {
             socialContainer.innerHTML += `
                 <a href="${s.link}" target="_blank" class="w-10 h-10 glassmorphism rounded-xl flex items-center justify-center text-gray-300 hover:text-brand hover:border-brand transition-all">
@@ -176,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render Skills
     const skillsContainer = document.getElementById('skills-container');
     if (skillsContainer) {
+        skillsContainer.innerHTML = '';
         CONFIG.skills.forEach(skill => {
             skillsContainer.innerHTML += `
                 <div class="glassmorphism-card p-5 rounded-2xl" data-aos="zoom-in">
@@ -194,6 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render Experience
     const expContainer = document.getElementById('experience-container');
     if (expContainer) {
+        expContainer.innerHTML = '';
         CONFIG.experience.forEach(exp => {
             expContainer.innerHTML += `
                 <div class="relative pl-8" data-aos="fade-up">
@@ -212,6 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render Portfolio
     const portfolioContainer = document.getElementById('portfolio-container');
     if (portfolioContainer) {
+        portfolioContainer.innerHTML = '';
         CONFIG.portfolio.forEach(item => {
             portfolioContainer.innerHTML += `
                 <div class="glassmorphism-card rounded-2xl overflow-hidden group" data-aos="fade-up">
@@ -238,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render Testimonials
     const testContainer = document.getElementById('testimonials-container');
     if (testContainer) {
+        testContainer.innerHTML = '';
         CONFIG.testimonials.forEach(t => {
             testContainer.innerHTML += `
                 <div class="glassmorphism-card p-6 rounded-2xl flex flex-col justify-between" data-aos="fade-up">
@@ -263,8 +306,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function typeEffect() {
         if (!typingElement) return;
 
-        const roles = CONFIG.personal.titleRoles || ["Web Developer"];
-        const currentRole = roles[roleIndex];
+        const roles = CONFIG.personal.titleRoles || ["Junior Developer"];
+        const currentRole = roles[roleIndex].trim();
 
         if (isDeleting) {
             typingElement.textContent = currentRole.substring(0, charIndex - 1);
