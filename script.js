@@ -29,42 +29,35 @@ const CONFIG = {
         { icon: "fa-brands fa-facebook-f", link: "https://www.facebook.com/share/1CaBxrsPjv/" },
     ],
 
+    // Updated Education & Certifications (Matching exact structure of Image)
     educationAndCertifications: [
         {
-            id: "01",
-            title: "B.Sc. in Computer Science & Engineering",
+            statusBadge: "Expected June 2027",
             institution: "Southeast University",
-            status: "Expected June 2027",
-            details: "11th Semester | CGPA: 2.72 / 4.00",
-            badge: "Academic Degree",
-            badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/20"
+            title: "B.Sc. in Computer Science & Engineering",
+            description: "Currently pursuing B.Sc. in Computer Science & Engineering (11th Semester, CGPA: 2.72 / 4.00). Focusing on networking, system administration, software development, and core computer science fundamentals.",
+            tags: ["Networking", "Web Development", "Database Systems", "OSI/TCP-IP", "CCNA"]
         },
         {
-            id: "02",
-            title: "Diploma in Computer Science & ICT",
+            statusBadge: "June 2023",
             institution: "SIT Foundation BD",
-            status: "Issued: June 2023",
-            details: "Practical Web Development & Systems Training",
-            badge: "Diploma",
-            badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/20"
+            title: "Diploma in Computer Science & ICT",
+            description: "Completed comprehensive practical training in web development, computer operations, hardware fundamentals, and system maintenance.",
+            tags: ["Practical Web Dev", "System Training", "ICT Fundamentals"]
         },
         {
-            id: "03",
-            title: "Professional Digital Marketing",
+            statusBadge: "October 2023",
             institution: "UY LAB",
-            status: "Issued: October 2023",
-            details: "SEO, Content Strategy & Online Brand Positioning",
-            badge: "Professional Training",
-            badgeColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20"
+            title: "Professional Digital Marketing",
+            description: "Acquired hands-on experience in Search Engine Optimization (SEO), digital content strategy, and online brand management and positioning.",
+            tags: ["SEO", "Content Strategy", "Digital Marketing", "Brand Positioning"]
         },
         {
-            id: "04",
-            title: "Cisco Certified Network Associate (CCNA)",
+            statusBadge: "In Progress",
             institution: "Cisco / Self-Paced Prep",
-            status: "In Progress",
-            details: "Hands-on expertise in Routing, Switching, and Secure Device Access.",
-            badge: "Certification",
-            badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+            title: "Cisco Certified Network Associate (CCNA)",
+            description: "Gaining hands-on expertise in network routing, switching protocols, IP subnetting, and secure device access and administration.",
+            tags: ["Routing & Switching", "IP Subnetting", "Network Security", "TCP/IP Protocol"]
         }
     ],
 
@@ -162,9 +155,9 @@ const CONFIG = {
     ],
 
     // APIs Configuration
-    telegramBotToken: "YOUR_TELEGRAM_BOT_TOKEN", // Enter Telegram Bot Token
-    telegramChatId: "YOUR_TELEGRAM_CHAT_ID",   // Enter Telegram Chat ID
-    googleScriptUrl: "YOUR_GOOGLE_APPS_SCRIPT_URL", // Enter Google Apps Script URL
+    telegramBotToken: "YOUR_TELEGRAM_BOT_TOKEN", 
+    telegramChatId: "YOUR_TELEGRAM_CHAT_ID",   
+    googleScriptUrl: "YOUR_GOOGLE_APPS_SCRIPT_URL", 
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.528373307519!2d90.38883657613523!3d23.76417038817726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a049d531ef%3A0xb35181b5ff9d4e50!2sTejgaon%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
 };
 
@@ -208,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const aboutTitle = document.getElementById('about-title');
     if (aboutTitle) aboutTitle.textContent = CONFIG.personal.aboutTitle;
 
-    // Render About Description with innerHTML to support paragraph tags
+    // Render About Description with innerHTML
     const aboutDesc = document.getElementById('about-description');
     if (aboutDesc) aboutDesc.innerHTML = CONFIG.personal.aboutDesc;
 
@@ -292,44 +285,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Render Education & Certifications
+    // Render Education & Experience (Timeline Card Design matching image)
     const eduContainer = document.getElementById('education-container');
     if (eduContainer && CONFIG.educationAndCertifications) {
         eduContainer.innerHTML = '';
         CONFIG.educationAndCertifications.forEach(item => {
+            // Render Skill/Topic Tags
+            const tagsHtml = item.tags ? item.tags.map(tag => 
+                `<span class="px-3.5 py-1.5 text-xs font-medium text-slate-300 bg-slate-800/80 rounded-full border border-slate-700/60">${tag}</span>`
+            ).join('') : '';
+
             eduContainer.innerHTML += `
-                <div class="p-5 md:p-6 rounded-2xl bg-slate-900/50 backdrop-blur-xl border border-slate-800/80 hover:border-indigo-500/40 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 group" data-aos="fade-up">
-                    
-                    <!-- Left Side: ID & Title -->
-                    <div class="flex items-start md:items-center gap-4">
-                        <span class="text-2xl font-black text-indigo-400/50 group-hover:text-indigo-400 transition-colors font-mono">
-                            ${item.id}
-                        </span>
-                        <div>
-                            <div class="flex items-center gap-2 flex-wrap">
-                                <h3 class="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">
-                                    ${item.title}
-                                </h3>
-                                <span class="text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full border ${item.badgeColor}">
-                                    ${item.badge}
-                                </span>
-                            </div>
-                            <p class="text-sm text-slate-400 font-medium mt-1">
-                                <i class="fa-solid fa-building-columns text-xs text-indigo-400 mr-1"></i> ${item.institution}
-                            </p>
+                <div class="relative group" data-aos="fade-up">
+                    <!-- Timeline Left Circle Dot -->
+                    <div class="absolute -left-[31px] md:-left-[47px] top-6 w-4 h-4 rounded-full bg-slate-950 border-2 border-blue-500 group-hover:scale-125 group-hover:bg-blue-500 transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
+
+                    <!-- Card Body -->
+                    <div class="p-6 md:p-8 rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 hover:border-blue-500/40 transition-all duration-300 shadow-xl">
+                        
+                        <!-- Status Badge + Institution -->
+                        <div class="flex items-center gap-3 flex-wrap mb-3">
+                            <span class="px-3 py-1 text-xs font-semibold text-blue-400 bg-blue-500/10 border border-blue-500/20 rounded-full">
+                                ${item.statusBadge}
+                            </span>
+                            <span class="text-sm font-medium text-slate-400">
+                                ${item.institution}
+                            </span>
                         </div>
-                    </div>
 
-                    <!-- Right Side: Details & Status -->
-                    <div class="md:text-right border-t md:border-t-0 border-slate-800 pt-3 md:pt-0">
-                        <span class="inline-block text-xs font-semibold text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-lg border border-indigo-500/20 mb-1">
-                            ${item.status}
-                        </span>
-                        <p class="text-xs text-slate-400 max-w-sm md:ml-auto">
-                            ${item.details}
+                        <!-- Title -->
+                        <h3 class="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                            ${item.title}
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-slate-400 text-sm md:text-base leading-relaxed mb-6">
+                            ${item.description}
                         </p>
-                    </div>
 
+                        <!-- Tags Container -->
+                        <div class="flex flex-wrap gap-2">
+                            ${tagsHtml}
+                        </div>
+
+                    </div>
                 </div>
             `;
         });
@@ -587,4 +586,4 @@ if (themeToggleBtn) {
 
 if (themeToggleMobileBtn) {
     themeToggleMobileBtn.addEventListener('click', toggleTheme);
-} 
+}
