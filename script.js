@@ -9,8 +9,11 @@ const CONFIG = {
         email: "mdamdadulislam140@gmail.com",
         location: "Tejgaon, Dhaka-1215",
         bio: "I am a final‑year Computer Science and Engineering student at Southeast University set to graduate in 2027. I love networking and IT infrastructure. I am learning CCNA concepts, the OSI/TCP‑IP model and IP subnetting. I also dabble in web development with HTML5 and CSS3. I am looking for internship or entry‑level opportunities, in Network Engineering, System Administration or IT Infrastructure.",
-        aboutTitle: "Turning Concepts Into Digital Excellence",
-        aboutDesc: "Enthusiastic and detail-oriented final-year CSE student with a strong foundation in networking concepts and web technologies. Passionate about building resilient networks, managing systems, and delivering user-friendly web solutions.",
+        
+        aboutTitle: "Architecting Networks & Building Smart Web Solutions",
+        aboutDesc: `<p class="mb-3">I am a CSE student at Southeast University (Graduating 2027) passionate about network infrastructure and modern web engineering. I focus on bridging hardware infrastructure with software logic to build scalable, secure, and reliable digital systems.</p>
+        <p>With expertise in CCNA concepts, routing protocols, and full-stack development, I solve complex infrastructure challenges and engineer web applications. I am seeking opportunities as a Network Engineer, System Administrator, or Web Developer.</p>`,
+        
         profileImage: "suny.jpg", // Replace with your image URL
         cvUrl: "CV.pdf", // Your CV PDF File path
         stats: {
@@ -26,7 +29,7 @@ const CONFIG = {
         { icon: "fa-brands fa-facebook-f", link: "https://www.facebook.com/share/1CaBxrsPjv/" },
     ],
 
-  skills: [
+    skills: [
         {
             category: "Networking & Infrastructure",
             icon: "fa-solid fa-network-wired",
@@ -162,11 +165,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const statExp = document.getElementById('stat-exp');
     if (statExp) statExp.textContent = CONFIG.personal.stats.experience;
 
+    // Render About Title
     const aboutTitle = document.getElementById('about-title');
     if (aboutTitle) aboutTitle.textContent = CONFIG.personal.aboutTitle;
 
+    // Render About Description with innerHTML to support paragraph tags
     const aboutDesc = document.getElementById('about-description');
-    if (aboutDesc) aboutDesc.textContent = CONFIG.personal.aboutDesc;
+    if (aboutDesc) aboutDesc.innerHTML = CONFIG.personal.aboutDesc;
 
     const statProjects = document.getElementById('stat-projects');
     if (statProjects) statProjects.textContent = CONFIG.personal.stats.completedProjects;
@@ -189,51 +194,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const googleMap = document.getElementById('google-map');
     if (googleMap) googleMap.src = CONFIG.mapEmbedUrl;
 
-   // Personal Info Grid
-const personalGrid = document.getElementById('personal-info-grid');
-if (personalGrid) {
-    personalGrid.innerHTML = `
-        <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
-            <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-sm shrink-0">
-                <i class="fa-solid fa-phone"></i>
+    // Personal Info Grid
+    const personalGrid = document.getElementById('personal-info-grid');
+    if (personalGrid) {
+        personalGrid.innerHTML = `
+            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+                <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-sm shrink-0">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                    <span class="text-gray-400 text-xs block">Phone</span>
+                    <a href="tel:${CONFIG.personal.phone}" class="font-semibold text-white text-sm hover:text-blue-400 transition-colors">${CONFIG.personal.phone}</a>
+                </div>
             </div>
-            <div>
-                <span class="text-gray-400 text-xs block">Phone</span>
-                <a href="tel:${CONFIG.personal.phone}" class="font-semibold text-white text-sm hover:text-blue-400 transition-colors">${CONFIG.personal.phone}</a>
-            </div>
-        </div>
 
-        <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
-            <div class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-sm shrink-0">
-                <i class="fa-solid fa-envelope"></i>
+            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+                <div class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-sm shrink-0">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                    <span class="text-gray-400 text-xs block">Email</span>
+                    <a href="mailto:${CONFIG.personal.email}" class="font-semibold text-white text-sm hover:text-indigo-400 transition-colors break-all">${CONFIG.personal.email}</a>
+                </div>
             </div>
-            <div>
-                <span class="text-gray-400 text-xs block">Email</span>
-                <a href="mailto:${CONFIG.personal.email}" class="font-semibold text-white text-sm hover:text-indigo-400 transition-colors break-all">${CONFIG.personal.email}</a>
-            </div>
-        </div>
 
-        <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
-            <div class="w-9 h-9 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-sm shrink-0">
-                <i class="fa-solid fa-location-dot"></i>
+            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+                <div class="w-9 h-9 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-sm shrink-0">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                    <span class="text-gray-400 text-xs block">Location</span>
+                    <p class="font-semibold text-white text-sm">${CONFIG.personal.location}</p>
+                </div>
             </div>
-            <div>
-                <span class="text-gray-400 text-xs block">Location</span>
-                <p class="font-semibold text-white text-sm">${CONFIG.personal.location}</p>
-            </div>
-        </div>
 
-        <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
-            <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm shrink-0">
-                <i class="fa-solid fa-briefcase"></i>
+            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+                <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm shrink-0">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div>
+                    <span class="text-gray-400 text-xs block">Status</span>
+                    <p class="font-semibold text-emerald-400 text-sm">Available for Hire / Internship</p>
+                </div>
             </div>
-            <div>
-                <span class="text-gray-400 text-xs block">Status</span>
-                <p class="font-semibold text-emerald-400 text-sm">Available for Hire / Internship</p>
-            </div>
-        </div>
-    `;
-}
+        `;
+    }
 
     // Render Social Links
     const socialContainer = document.getElementById('hero-socials');
@@ -248,7 +253,8 @@ if (personalGrid) {
         });
     }
 
-  const skillsContainer = document.getElementById('skills-container');
+    // Render Skills
+    const skillsContainer = document.getElementById('skills-container');
     if (skillsContainer) {
         skillsContainer.innerHTML = '';
         CONFIG.skills.forEach(skill => {
