@@ -29,6 +29,45 @@ const CONFIG = {
         { icon: "fa-brands fa-facebook-f", link: "https://www.facebook.com/share/1CaBxrsPjv/" },
     ],
 
+    educationAndCertifications: [
+        {
+            id: "01",
+            title: "B.Sc. in Computer Science & Engineering",
+            institution: "Southeast University",
+            status: "Expected June 2027",
+            details: "11th Semester | CGPA: 2.72 / 4.00",
+            badge: "Academic Degree",
+            badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/20"
+        },
+        {
+            id: "02",
+            title: "Diploma in Computer Science & ICT",
+            institution: "SIT Foundation BD",
+            status: "Issued: June 2023",
+            details: "Practical Web Development & Systems Training",
+            badge: "Diploma",
+            badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/20"
+        },
+        {
+            id: "03",
+            title: "Professional Digital Marketing",
+            institution: "UY LAB",
+            status: "Issued: October 2023",
+            details: "SEO, Content Strategy & Online Brand Positioning",
+            badge: "Professional Training",
+            badgeColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20"
+        },
+        {
+            id: "04",
+            title: "Cisco Certified Network Associate (CCNA)",
+            institution: "Cisco / Self-Paced Prep",
+            status: "In Progress",
+            details: "Hands-on expertise in Routing, Switching, and Secure Device Access.",
+            badge: "Certification",
+            badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+        }
+    ],
+
     skills: [
         {
             category: "Networking & Infrastructure",
@@ -249,6 +288,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 <a href="${s.link}" target="_blank" class="w-10 h-10 glassmorphism rounded-xl flex items-center justify-center text-gray-300 hover:text-brand hover:border-brand transition-all">
                     <i class="${s.icon}"></i>
                 </a>
+            `;
+        });
+    }
+
+    // Render Education & Certifications
+    const eduContainer = document.getElementById('education-container');
+    if (eduContainer && CONFIG.educationAndCertifications) {
+        eduContainer.innerHTML = '';
+        CONFIG.educationAndCertifications.forEach(item => {
+            eduContainer.innerHTML += `
+                <div class="p-5 md:p-6 rounded-2xl bg-slate-900/50 backdrop-blur-xl border border-slate-800/80 hover:border-indigo-500/40 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 group" data-aos="fade-up">
+                    
+                    <!-- Left Side: ID & Title -->
+                    <div class="flex items-start md:items-center gap-4">
+                        <span class="text-2xl font-black text-indigo-400/50 group-hover:text-indigo-400 transition-colors font-mono">
+                            ${item.id}
+                        </span>
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <h3 class="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">
+                                    ${item.title}
+                                </h3>
+                                <span class="text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full border ${item.badgeColor}">
+                                    ${item.badge}
+                                </span>
+                            </div>
+                            <p class="text-sm text-slate-400 font-medium mt-1">
+                                <i class="fa-solid fa-building-columns text-xs text-indigo-400 mr-1"></i> ${item.institution}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Details & Status -->
+                    <div class="md:text-right border-t md:border-t-0 border-slate-800 pt-3 md:pt-0">
+                        <span class="inline-block text-xs font-semibold text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-lg border border-indigo-500/20 mb-1">
+                            ${item.status}
+                        </span>
+                        <p class="text-xs text-slate-400 max-w-sm md:ml-auto">
+                            ${item.details}
+                        </p>
+                    </div>
+
+                </div>
             `;
         });
     }
@@ -505,4 +587,4 @@ if (themeToggleBtn) {
 
 if (themeToggleMobileBtn) {
     themeToggleMobileBtn.addEventListener('click', toggleTheme);
-}
+} 
