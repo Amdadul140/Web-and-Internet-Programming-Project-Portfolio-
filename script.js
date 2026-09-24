@@ -158,7 +158,7 @@ const CONFIG = {
     telegramBotToken: "YOUR_TELEGRAM_BOT_TOKEN", 
     telegramChatId: "YOUR_TELEGRAM_CHAT_ID",   
     googleScriptUrl: "YOUR_GOOGLE_APPS_SCRIPT_URL", 
-    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.528373307519!2d90.38883657613523!3d23.76417038817726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a049d531ef%3A0xb35181b5ff9d4e50!2sTejgaon%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
+    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.528373307519!2d90.38883657613523!3d23.76417038817726!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a049d531ef%3A0xb35181b5ff9d4e50!2sTejgaon%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
 };
 
 /* ==========================================================================
@@ -334,39 +334,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Render Skills
+    // Render Skills (Continuous Moving Marquee + Interactive Cards)
     const skillsContainer = document.getElementById('skills-container');
-    if (skillsContainer) {
-        skillsContainer.innerHTML = '';
-        CONFIG.skills.forEach(skill => {
-            const tagsHtml = skill.tags.map(tag => 
-                `<span class="px-2.5 py-1 text-xs font-medium bg-slate-800/80 text-gray-300 rounded-lg border border-slate-700/60 hover:border-blue-500/40 transition-colors">${tag}</span>`
-            ).join('');
+    const skillsMarquee = document.getElementById('skills-marquee');
 
-            skillsContainer.innerHTML += `
-                <div class="p-6 rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 shadow-xl hover:border-blue-500/30 transition-all flex flex-col justify-between group" data-aos="zoom-in">
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-xl bg-gradient-to-br ${skill.color} flex items-center justify-center text-white text-lg shadow-lg">
-                                    <i class="${skill.icon}"></i>
-                                </div>
-                                <h3 class="font-bold text-white text-lg">${skill.category}</h3>
-                            </div>
-                            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">${skill.level}</span>
-                        </div>
-                        
-                        <div class="flex flex-wrap gap-2 my-4">
-                            ${tagsHtml}
-                        </div>
-                    </div>
-
-                    <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden mt-2">
-                        <div class="bg-gradient-to-r ${skill.color} h-2 rounded-full transition-all duration-1000" style="width: ${skill.level}"></div>
-                    </div>
-                </div>
-            `;
+    if (CONFIG.skills) {
+        // Collect all individual skill tags for the continuous slider
+        let allSkills = [];
+        CONFIG.skills.forEach(s => {
+            if (s.tags) allSkills.push(...s.tags);
         });
+
+        // Duplicate the skills array to create a seamless infinite looping effect
+        const duplicatedSkills = [...allSkills, ...allSkills];
+
+        // 1. Render Moving Marquee Items
+        if (skillsMarquee) {
+            skillsMarquee.innerHTML = duplicatedSkills.map(tag => `
+                <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60 shadow-md group hover:border-blue-500/50 transition-all cursor-pointer shrink-0">
+                    <span class="w-2 h-2 rounded-full bg-blue-500 group-hover:scale-125 transition-transform"></span>
+                    <span class="text-sm font-semibold text-slate-200 group-hover:text-blue-400 transition-colors">${tag}</span>
+                </div>
+            `).join('');
+        }
+
+        // 2. Render Skill Category Cards
+        if (skillsContainer) {
+            skillsContainer.innerHTML = '';
+            CONFIG.skills.forEach(skill => {
+                const tagsHtml = skill.tags.map(tag => 
+                    `<span class="px-3 py-1.5 text-xs font-medium bg-slate-800/90 text-slate-300 rounded-lg border border-slate-700/60 hover:border-blue-500/40 hover:text-white transition-all">${tag}</span>`
+                ).join('');
+
+                skillsContainer.innerHTML += `
+                    <div class="p-6 md:p-7 rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 shadow-xl hover:border-blue-500/40 hover:shadow-blue-500/5 transition-all duration-300 flex flex-col justify-between group" data-aos="zoom-in">
+                        <div>
+                            <!-- Header: Icon, Category & Level -->
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-3.5">
+                                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br ${skill.color} flex items-center justify-center text-white text-lg shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                        <i class="${skill.icon}"></i>
+                                    </div>
+                                    <h3 class="font-bold text-white text-lg md:text-xl group-hover:text-blue-400 transition-colors">${skill.category}</h3>
+                                </div>
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">${skill.level}</span>
+                            </div>
+                            
+                            <!-- Tags Grid -->
+                            <div class="flex flex-wrap gap-2 my-5">
+                                ${tagsHtml}
+                            </div>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="w-full bg-slate-800/80 rounded-full h-2 overflow-hidden mt-2 border border-slate-700/30">
+                            <div class="bg-gradient-to-r ${skill.color} h-2 rounded-full transition-all duration-1000 group-hover:brightness-125" style="width: ${skill.level}"></div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
     }
 
     // Render Experience

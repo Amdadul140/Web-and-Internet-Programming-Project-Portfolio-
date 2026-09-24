@@ -39,6 +39,22 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- 🚀 Marquee Slider Inline CSS Fix -->
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex !important;
+            width: max-content !important;
+            animation: marquee 25s linear infinite !important;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused !important;
+        }
+    </style>
 </head>
 <body class="relative min-h-screen bg-[#0b0f19] text-gray-100 font-sans antialiased selection:bg-brand selection:text-white">
 
@@ -81,6 +97,7 @@
             <a href="#about" class="mobile-link block px-3 py-2 rounded-md hover:bg-gray-800/50 hover:text-brand">About</a>
             <a href="#education" class="mobile-link block px-3 py-2 rounded-md hover:bg-gray-800/50 hover:text-brand">Education</a>
             <a href="#skills" class="mobile-link block px-3 py-2 rounded-md hover:bg-gray-800/50 hover:text-brand">Skills</a>
+            <a href="#portfolio" class="mobile-link block px-3 py-2 rounded-md hover:bg-gray-800/50 hover:text-brand">Projects</a>
             <a href="#contact" class="mobile-link block px-3 py-2 rounded-md hover:bg-gray-800/50 hover:text-brand">Contact</a>
             <button id="theme-toggle-mobile" class="w-full text-left px-3 py-2 rounded-md hover:bg-gray-800/50 flex items-center justify-between text-gray-300">
                 <span>Toggle Theme</span>
@@ -123,7 +140,7 @@
                     <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96">
                         <div class="absolute inset-0 bg-gradient-to-tr from-brand to-purple-600 rounded-3xl rotate-6 blur-lg opacity-40 animate-pulse"></div>
                         <div class="absolute inset-0 glassmorphism rounded-3xl border border-white/10 overflow-hidden transform hover:-rotate-2 transition-all duration-500">
-                            <img id="hero-img" src="" alt="Md. Amdadul Islam" class="w-full h-full object-cover">
+                            <img id="hero-img" src="assets/profile.jpg" alt="Md. Amdadul Islam" class="w-full h-full object-cover">
                         </div>
                         <div class="absolute -bottom-6 -left-6 glassmorphism p-4 rounded-2xl animate-float shadow-xl hidden sm:flex items-center space-x-3">
                             <div class="w-12 h-12 bg-brand/20 rounded-xl flex items-center justify-center text-brand text-2xl">
@@ -131,7 +148,7 @@
                             </div>
                             <div>
                                 <p class="text-xs text-gray-400">Experience</p>
-                                <p class="text-sm font-bold text-white" id="stat-exp"></p>
+                                <p class="text-sm font-bold text-white" id="stat-exp">2+ Years</p>
                             </div>
                         </div>
                     </div>
@@ -140,7 +157,7 @@
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
+    <!-- About Section -->
     <section id="about" class="py-20 relative overflow-hidden">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -160,12 +177,12 @@
                             Architecting Networks & Building Smart Web Solutions
                         </h3>
                         <div id="about-description" class="text-gray-300 text-sm md:text-base leading-relaxed space-y-4 mb-6">
-                            <!-- JS code will insert dynamic English bio here -->
+                            <!-- JS script will insert dynamic bio here -->
                         </div>
                     </div>
 
                     <div id="personal-info-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-slate-800/80">
-                        <!-- JS Code will render styled info items here -->
+                        <!-- JS script will render styled info items here -->
                     </div>
                 </div>
 
@@ -207,10 +224,9 @@
         </div>
     </section>
 
-    <!-- EDUCATION & EXPERIENCE SECTION (NEW DESIGN MATCHING IMAGE) -->
+    <!-- Education & Experience Section -->
     <section id="education" class="py-20 relative z-10">
         <div class="container mx-auto px-4 max-w-4xl">
-            <!-- Section Title Header -->
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
                     Education & <span class="text-brand">Experience</span>
@@ -220,7 +236,6 @@
                 </p>
             </div>
 
-            <!-- Vertical Timeline Container -->
             <div class="relative pl-6 md:pl-10 border-l-2 border-brand/30 space-y-10" id="education-timeline">
                 
                 <!-- Card 1: B.Sc. in CSE -->
@@ -239,7 +254,7 @@
                             B.Sc. in Computer Science & Engineering
                         </h3>
                         <p class="text-slate-400 text-sm md:text-base leading-relaxed mb-6">
-                            Currently pursuing B.Sc. in CSE (11th Semester, CGPA: 2.72/4.00). Focus area includes computer network design, web application development, algorithms, and system administration.
+                            Currently pursuing B.Sc. in CSE (11th Semester). Focus area includes computer network design, web application development, algorithms, and system administration.
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-3.5 py-1.5 text-xs font-medium text-slate-300 bg-slate-800/80 rounded-full border border-slate-700/60">Networking</span>
@@ -332,7 +347,7 @@
         </div>
     </section>
 
-    <!-- SKILLS SECTION -->
+    <!-- Skills Section -->
     <section id="skills" class="py-20 relative">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -345,8 +360,18 @@
                 <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto rounded-full mt-4"></div>
             </div>
 
+            <!-- 🚀 Moving Skill Marquee Container Added Below -->
+            <div class="relative w-full overflow-hidden py-4 mb-12 bg-slate-900/40 rounded-2xl border border-slate-800/80 backdrop-blur-md">
+                <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-darkbg to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-darkbg to-transparent z-10 pointer-events-none"></div>
+                
+                <div class="flex gap-4 animate-marquee whitespace-nowrap" id="skills-marquee">
+                    <!-- Dynamic JavaScript items will load here -->
+                </div>
+            </div>
+
             <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- JS will inject modern skill cards here -->
+                <!-- JS script will inject modern skill cards here -->
             </div>
         </div>
     </section>
@@ -360,7 +385,9 @@
                 <div class="w-20 h-1 bg-brand mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-container"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-container">
+                <!-- JS script will inject portfolio items here -->
+            </div>
         </div>
     </section>
 
@@ -372,7 +399,9 @@
                 <div class="w-20 h-1 bg-brand mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="testimonials-container"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="testimonials-container">
+                <!-- JS script will inject testimonials here -->
+            </div>
         </div>
     </section>
 
@@ -393,7 +422,7 @@
                         </div>
                         <div>
                             <p class="text-xs text-gray-400">Phone Number</p>
-                            <p class="text-white font-medium" id="contact-phone"></p>
+                            <p class="text-white font-medium" id="contact-phone">+880 1234 567890</p>
                         </div>
                     </div>
 
@@ -403,7 +432,7 @@
                         </div>
                         <div>
                             <p class="text-xs text-gray-400">Email Address</p>
-                            <p class="text-white font-medium" id="contact-email"></p>
+                            <p class="text-white font-medium" id="contact-email">contact@amdadul.com</p>
                         </div>
                     </div>
 
@@ -413,7 +442,7 @@
                         </div>
                         <div>
                             <p class="text-xs text-gray-400">Location</p>
-                            <p class="text-white font-medium" id="contact-location"></p>
+                            <p class="text-white font-medium" id="contact-location">Dhaka, Bangladesh</p>
                         </div>
                     </div>
                 </div>
@@ -456,14 +485,14 @@
     <section class="py-12 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="glassmorphism p-3 rounded-3xl overflow-hidden shadow-2xl h-96">
-                <iframe id="google-map" class="w-full h-full rounded-2xl filter grayscale contrast-125 opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500" src="" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe id="google-map" class="w-full h-full rounded-2xl filter grayscale contrast-125 opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233667.8223908687!2d90.27923710592236!3d23.780887457084543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka!5e0!3m2!1sen!2sbd!4v1680000000000!5m2!1sen!2sbd" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="py-8 border-t border-gray-800/80 text-center text-gray-400 text-sm relative z-10">
-        <p>© <span id="current-year"></span> <span id="footer-name">Md. Amdadul Islam</span>. All Rights Reserved.</p>
+        <p>© <span id="current-year">2026</span> <span id="footer-name">Md. Amdadul Islam</span>. All Rights Reserved.</p>
     </footer>
 
     <!-- Scripts -->
