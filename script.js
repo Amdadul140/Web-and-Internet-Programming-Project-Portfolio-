@@ -36,7 +36,7 @@ const CONFIG = {
             institution: "Southeast University",
             title: "B.Sc. in Computer Science & Engineering",
             description: "Currently pursuing B.Sc. in Computer Science & Engineering (11th Semester, CGPA: 2.72 / 4.00). Focusing on networking, system administration, software development, and core computer science fundamentals.",
-            tags: ["Networking", "Web Development", "Database Systems", "OSI/TCP-IP", "CCNA"]
+            tags: ["Networking", "Web Development", "OSI/TCP-IP", "CCNA"]
         },
         {
             statusBadge: "June 2023",
@@ -68,13 +68,6 @@ const CONFIG = {
             color: "from-blue-500 to-indigo-500",
             tags: ["CCNA", "OSI Model", "TCP/IP", "Routing & Switching", "Subnetting", "Network Troubleshooting"],
             level: "80%"
-        },
-        {
-            category: "Backend Development",
-            icon: "fa-solid fa-server",
-            color: "from-indigo-500 to-purple-500",
-            tags: ["Laravel", "PHP", "MySQL", "Database Architecture", "REST API"],
-            level: "90%"
         },
         {
             category: "CMS & Custom Solutions",
@@ -165,6 +158,24 @@ const CONFIG = {
    DOM RENDERER & LOGIC
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
+    // Dynamically Inject Marquee CSS into document head
+    const marqueeStyle = document.createElement('style');
+    marqueeStyle.innerHTML = `
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-slow {
+            display: flex !important;
+            width: max-content !important;
+            animation: marquee 50s linear infinite !important;
+        }
+        .animate-marquee-slow:hover {
+            animation-play-state: paused !important;
+        }
+    `;
+    document.head.appendChild(marqueeStyle);
+
     // Initialize AOS Animation Library
     if (typeof AOS !== 'undefined') {
         AOS.init({ duration: 800, once: true });
@@ -285,25 +296,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Render Education & Experience (Timeline Card Design matching image)
+    // Render Education & Experience
     const eduContainer = document.getElementById('education-container');
     if (eduContainer && CONFIG.educationAndCertifications) {
         eduContainer.innerHTML = '';
         CONFIG.educationAndCertifications.forEach(item => {
-            // Render Skill/Topic Tags
             const tagsHtml = item.tags ? item.tags.map(tag => 
                 `<span class="px-3.5 py-1.5 text-xs font-medium text-slate-300 bg-slate-800/80 rounded-full border border-slate-700/60">${tag}</span>`
             ).join('') : '';
 
             eduContainer.innerHTML += `
                 <div class="relative group" data-aos="fade-up">
-                    <!-- Timeline Left Circle Dot -->
                     <div class="absolute -left-[31px] md:-left-[47px] top-6 w-4 h-4 rounded-full bg-slate-950 border-2 border-blue-500 group-hover:scale-125 group-hover:bg-blue-500 transition-all duration-300 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
 
-                    <!-- Card Body -->
                     <div class="p-6 md:p-8 rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 hover:border-blue-500/40 transition-all duration-300 shadow-xl">
-                        
-                        <!-- Status Badge + Institution -->
                         <div class="flex items-center gap-3 flex-wrap mb-3">
                             <span class="px-3 py-1 text-xs font-semibold text-blue-400 bg-blue-500/10 border border-blue-500/20 rounded-full">
                                 ${item.statusBadge}
@@ -313,43 +319,39 @@ document.addEventListener('DOMContentLoaded', () => {
                             </span>
                         </div>
 
-                        <!-- Title -->
                         <h3 class="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
                             ${item.title}
                         </h3>
 
-                        <!-- Description -->
                         <p class="text-slate-400 text-sm md:text-base leading-relaxed mb-6">
                             ${item.description}
                         </p>
 
-                        <!-- Tags Container -->
                         <div class="flex flex-wrap gap-2">
                             ${tagsHtml}
                         </div>
-
                     </div>
                 </div>
             `;
         });
     }
 
-    // Render Skills (Continuous Moving Marquee + Interactive Cards)
+    // Render Skills (Continuous Slow Marquee Slider + Interactive Cards)
     const skillsContainer = document.getElementById('skills-container');
     const skillsMarquee = document.getElementById('skills-marquee');
 
     if (CONFIG.skills) {
-        // Collect all individual skill tags for the continuous slider
         let allSkills = [];
         CONFIG.skills.forEach(s => {
             if (s.tags) allSkills.push(...s.tags);
         });
 
-        // Duplicate the skills array to create a seamless infinite looping effect
-        const duplicatedSkills = [...allSkills, ...allSkills];
+        // Duplicate the skills array to create seamless loop
+        const duplicatedSkills = [...allSkills, ...allSkills, ...allSkills];
 
-        // 1. Render Moving Marquee Items
+        // 1. Render Moving Marquee Items (Enforcing Slow Motion)
         if (skillsMarquee) {
+            skillsMarquee.classList.add('animate-marquee-slow');
             skillsMarquee.innerHTML = duplicatedSkills.map(tag => `
                 <div class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60 shadow-md group hover:border-blue-500/50 transition-all cursor-pointer shrink-0">
                     <span class="w-2 h-2 rounded-full bg-blue-500 group-hover:scale-125 transition-transform"></span>
@@ -369,7 +371,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 skillsContainer.innerHTML += `
                     <div class="p-6 md:p-7 rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 shadow-xl hover:border-blue-500/40 hover:shadow-blue-500/5 transition-all duration-300 flex flex-col justify-between group" data-aos="zoom-in">
                         <div>
-                            <!-- Header: Icon, Category & Level -->
                             <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center gap-3.5">
                                     <div class="w-11 h-11 rounded-xl bg-gradient-to-br ${skill.color} flex items-center justify-center text-white text-lg shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -380,13 +381,11 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="text-xs font-bold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">${skill.level}</span>
                             </div>
                             
-                            <!-- Tags Grid -->
                             <div class="flex flex-wrap gap-2 my-5">
                                 ${tagsHtml}
                             </div>
                         </div>
 
-                        <!-- Progress Bar -->
                         <div class="w-full bg-slate-800/80 rounded-full h-2 overflow-hidden mt-2 border border-slate-700/30">
                             <div class="bg-gradient-to-r ${skill.color} h-2 rounded-full transition-all duration-1000 group-hover:brightness-125" style="width: ${skill.level}"></div>
                         </div>

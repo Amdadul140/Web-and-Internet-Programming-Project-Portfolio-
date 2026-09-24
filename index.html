@@ -40,7 +40,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- 🚀 Marquee Slider Inline CSS Fix -->
+    <!-- 🚀 Marquee Slider Fixed Slow Speed CSS -->
     <style>
         @keyframes marquee {
             0% { transform: translateX(0%); }
@@ -49,7 +49,7 @@
         .animate-marquee {
             display: flex !important;
             width: max-content !important;
-            animation: marquee 25s linear infinite !important;
+            animation: marquee 60s linear infinite !important; /* 60s দেওয়ার ফলে অনেক ধীরগতির হবে */
         }
         .animate-marquee:hover {
             animation-play-state: paused !important;
@@ -360,12 +360,13 @@
                 <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto rounded-full mt-4"></div>
             </div>
 
-            <!-- 🚀 Moving Skill Marquee Container Added Below -->
+            <!-- 🚀 Moving Skill Marquee Container (Inlined Inline Animation Style to ensure performance) -->
             <div class="relative w-full overflow-hidden py-4 mb-12 bg-slate-900/40 rounded-2xl border border-slate-800/80 backdrop-blur-md">
                 <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-darkbg to-transparent z-10 pointer-events-none"></div>
                 <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-darkbg to-transparent z-10 pointer-events-none"></div>
                 
-                <div class="flex gap-4 animate-marquee whitespace-nowrap" id="skills-marquee">
+                <!-- inline style দিয়ে 60s সেট করে দেওয়া হয়েছে যেন JS দিয়ে কোনো ওভাররাইড না হতে পারে -->
+                <div class="flex gap-4 animate-marquee whitespace-nowrap" id="skills-marquee" style="animation: marquee 60s linear infinite !important;">
                     <!-- Dynamic JavaScript items will load here -->
                 </div>
             </div>
@@ -485,17 +486,12 @@
     <section class="py-12 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="glassmorphism p-3 rounded-3xl overflow-hidden shadow-2xl h-96">
-                <iframe id="google-map" class="w-full h-full rounded-2xl filter grayscale contrast-125 opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233667.8223908687!2d90.27923710592236!3d23.780887457084543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka!5e0!3m2!1sen!2sbd!4v1680000000000!5m2!1sen!2sbd" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe id="google-map" class="w-full h-full rounded-2xl filter grayscale contrast-125 opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233667.8223908687!2d90.25487211520108!3d23.78088745620188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bb08598144!2sDhaka!5e0!3m2!1sen!2sbd!4v1680000000000!5m2!1sen!2sbd" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-8 border-t border-gray-800/80 text-center text-gray-400 text-sm relative z-10">
-        <p>© <span id="current-year">2026</span> <span id="footer-name">Md. Amdadul Islam</span>. All Rights Reserved.</p>
-    </footer>
-
-    <!-- Scripts -->
+    <!-- JS Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
